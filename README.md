@@ -35,7 +35,8 @@ QR Code Contents: `<menu-id>`
                     "ingredients": [
                         "the hopes and dreams of a billion young asian children trying to get into harvard", "wheat"
                     ],
-                    "description": "borger"
+                    "description": "borger",
+                    "image": lmaoianfigureitout
                 },
             ]
         }

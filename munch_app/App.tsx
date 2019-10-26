@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Lewd wig is gay</Text>
+      <Text>ian is bad really bad oh my god he is so bad</Text>
     </View>
   );
 }
