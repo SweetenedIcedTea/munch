@@ -13,11 +13,13 @@ Returns JSON for menu
 
 ```json
 { 
+    "id": 123456,
     "sections": [
         {
             "section-name": "bbq",
             "foods": [
                 {
+                    "id": 654321,
                     "name": "Burger",
                     "price": 6.99,
                     "ingredients": [
@@ -28,7 +30,6 @@ Returns JSON for menu
             ]
         }
     ]
-    
 }
 
 ```
