@@ -12,17 +12,6 @@ QR Code Contents: `<menu-id>`
  * Returns JSON for menu
  * Format: TBD
 
-`POST /order`: Places an order
-
- * Send JSON for order
- * Format: TBD
- * Receive JSON for order confirmation
- * Format: TBD
-
-### Restaurant ←—→ Server
-
-#### Menu Format
-
 ```json
 { 
     "sections": [
@@ -44,4 +33,16 @@ QR Code Contents: `<menu-id>`
 }
 
 ```
+
+`POST /order`: Places an order
+
+ * Send JSON for order
+ * Format: TBD
+ * Receive JSON for order confirmation
+ * Format: TBD
+
+### Restaurant ←—→ Server
+
+#### Menu Format
+
 
