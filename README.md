@@ -21,4 +21,27 @@ QR Code Contents: `<menu-id>`
 
 ### Restaurant ←—→ Server
 
-TBD
+#### Menu Format
+
+```json
+{ 
+    "sections": [
+        {
+            "section-name": "bbq",
+            "foods": [
+                {
+                    "name": "Burger",
+                    "price": 6.99,
+                    "ingredients": [
+                        "the hopes and dreams of a billion young asian children trying to get into harvard", "wheat"
+                    ],
+                    "description": "borger"
+                },
+            ]
+        }
+    ]
+    
+}
+
+```
+
