@@ -20,7 +20,7 @@ Returns JSON for menu
             "section-name": "bbq",
             "foods": [
                 {
-                    "id": 654321,
+                    "item-id": 654321,
                     "name": "Burger",
                     "price": 6.99,
                     "ingredients": [
@@ -28,7 +28,6 @@ Returns JSON for menu
                     ],
                     "description": "borger",
                     "image": "..."
-                    //file path? How we store?
                 },
             ]
         }
@@ -38,6 +37,19 @@ Returns JSON for menu
 ```
 
 `POST /order`: Places an order
+
+```json
+{
+    "customer-id": 69,
+    "restaurant-id": 123456,
+    "table-id": 7890,
+    "order": [
+        {
+        "item-id": 654321
+        }
+    ]
+}
+```
 
  * Send JSON for order
  * Format: TBD
