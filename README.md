@@ -9,8 +9,31 @@ QR Code Contents: `<menu-id>`
 
 `GET /menu/<menu-id>`: Gets the menu
 
- * Returns JSON for menu
- * Format: TBD
+Returns JSON for menu
+
+```json
+{ 
+    "id": 123456,
+    "sections": [
+        {
+            "section-name": "bbq",
+            "foods": [
+                {
+                    "id": 654321,
+                    "name": "Burger",
+                    "price": 6.99,
+                    "ingredients": [
+                        "the hopes and dreams of a billion young asian children trying to get into harvard", "wheat"
+                    ],
+                    "description": "borger",
+                    "image": lmaoianfigureitout
+                },
+            ]
+        }
+    ]
+}
+
+```
 
 `POST /order`: Places an order
 
@@ -23,26 +46,4 @@ QR Code Contents: `<menu-id>`
 
 #### Menu Format
 
-```json
-{ 
-    "sections": [
-        {
-            "section-name": "bbq",
-            "foods": [
-                {
-                    "name": "Burger",
-                    "price": 6.99,
-                    "ingredients": [
-                        "the hopes and dreams of a billion young asian children trying to get into harvard", "wheat"
-                    ],
-                    "description": "borger",
-                    "image": lmaoianfigureitout
-                },
-            ]
-        }
-    ]
-    
-}
-
-```
 
