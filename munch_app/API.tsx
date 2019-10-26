@@ -17,7 +17,7 @@ export default class MunchServer {
             const responseData = response.json();
             return responseData;
         } catch (error) {
-            console.error(error); // bruh
+            console.log("[API Error] "+error); // bruh
         }
     }
 }
