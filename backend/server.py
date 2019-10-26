@@ -33,7 +33,7 @@ class Handler:
         return web.Response(text = result)
 
     async def handle_order(self, request):
-        json = request.read()
-        result = self.backend.handle_order(json)
+        json = await request.read()
+        result = self.backend.handle_order(json.decode())
         return web.Response(text = result)
 

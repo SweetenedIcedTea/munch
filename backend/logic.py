@@ -13,7 +13,7 @@ class Backend:
         self.rests = {}
 
     def register_rest(self, rest_id, queue):
-        print(f"registering rest {rest_id}")
+        print("registering rest", rest_id)
         self.rests[rest_id] = queue
 
     def unregister_rest(self, rest_id):
@@ -24,7 +24,7 @@ class Backend:
         self.rests[rest_id].put_noawait(data)
 
     def handle_menu(self,menu_id):
-        print(f"Handling menu {menu_id}")
+        print("Handling menu", menu_id)
         with open(menu_id+".json",'r') as f:
             v1=f.read()
             print(v1)
