@@ -14,7 +14,7 @@ Returns JSON for menu
 ```json
 { 
     "restaurant-id": 123456,
-    "table-id": 7890
+    "table-id": 7890,
     "sections": [
         {
             "section-name": "bbq",
