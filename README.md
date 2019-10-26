@@ -13,7 +13,8 @@ Returns JSON for menu
 
 ```json
 { 
-    "id": 123456,
+    "restaurant-id": 123456,
+    "table-id": 7890
     "sections": [
         {
             "section-name": "bbq",
@@ -26,7 +27,8 @@ Returns JSON for menu
                         "the hopes and dreams of a billion young asian children trying to get into harvard", "wheat"
                     ],
                     "description": "borger",
-                    "image": lmaoianfigureitout
+                    "image": "..."
+                    //file path? How we store?
                 },
             ]
         }
