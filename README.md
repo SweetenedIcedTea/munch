@@ -9,8 +9,7 @@ QR Code Contents: `<menu-id>`
 
 `GET /menu/<menu-id>`: Gets the menu
 
- * Returns JSON for menu
- * Format: TBD
+Returns JSON for menu
 
 ```json
 { 
