@@ -1,21 +1,19 @@
-import http_server
+from aiohttp import web
 
-class Backend:
-    def __init__(self):
-        pass
-    
-    def handle_order(self, json_data):
-        # TODO: actually tell restaurants the thing
-        return b"Returned data!"
-
-    # ...
+from logic import Backend
+from server import Handler
 
 def main():
     backend = Backend()
+    handler = Handler(backend)
 
-    global backend
-
-    http_server.serve_http()
+    app = web.Application()
+    app.add_routes([
+        web.get('/', handler.handle_home),
+        web.get('/menu/{menu_id}', handler.handle_menu),
+        web.post('/order', handler.handle_order),
+        web.get('/rest', handler.handle_websocket)])
+    web.run_app(app)
 
 if __name__ == '__main__':
     main()
