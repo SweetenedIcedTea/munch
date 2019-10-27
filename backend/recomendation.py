@@ -57,6 +57,7 @@ class recommend():
         self.v1d=v1d
         self.v2d=v2d
         self.ing_list=ing_list
+        self.il_length=len(ing_list)
         v1d_dset=make_datasets(v1d,ing_list)
         v2d_dset=make_datasets(v2d,ing_list)
         v1d_dset.shape=[1,119]
@@ -68,7 +69,7 @@ class recommend():
         v1d_train=np.concatenate([v1d_dset,buy_water],axis=1)
         v2d_train=np.concatenate([v2d_dset,buy_water],axis=1)
         self.init_train=np.concatenate([v1d_train,v2d_train],axis=0)
-        self.munch=munch_net().to(device)
+        self.munch=munch_net(self.il_length).to(device)
         self.criterion=nn.MSELoss()
         learning_rate=0.01
         self.optim=torch.optim.Adam(self.munch.parameters(), lr = learning_rate,weight_decay=0.000)
@@ -83,7 +84,7 @@ class recommend():
             return
         else:
             os.mkdir(os.getcwd()+"/ml/"+customer_id)
-            self.munch=munch_net().to(device)
+            self.munch=munch_net(self.il_length).to(device)
             torch.save(self.munch.state_dict(),os.getcwd()+"/ml/"+customer_id+"/net.pt")
             np.savetxt(os.getcwd()+"/ml/"+customer_id+"/history.csv",self.init_train,delimiter=',')
             return
@@ -103,8 +104,8 @@ class recommend():
             np_pred[0,max_arg]=-1
         return max_list
     def recommend_train(self,customer_id,data):
-        input_data=data[:,0:119]
-        target_data=data[:,119:119+7]
+        input_data=data[:,0:self.il_length*7]
+        target_data=data[:,il_length*7+7]
         torch_idata=torch.from_numpy(input_data).to(device)
         torch_tdata=torch.from_numpy(target_data).to(device)
         self.account_check(customer_id)
