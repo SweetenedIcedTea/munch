@@ -51,7 +51,7 @@ def make_datasets(menu_dict,ing_list):
 #print(v1d)
 #menu_vector=make_datasets(v1d,ing_list)
 #print(menu_vector)
-class recommend():
+class recomend():
     def __init__(self):
         ing_list,v1d,v2d=load_menu()
         self.v1d=v1d
