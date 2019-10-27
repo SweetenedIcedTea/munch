@@ -29,10 +29,10 @@ window.onload = function() {
     let jsonObj = JSON.parse(message);
 
     var div = document.createElement("div");
-    div.class = 'order';
-    div.innerHTML += '<div style = "width: 150px; background-color: #484864">' + '<div style = "float: right">' + "$" + jsonObj.price + '</div>' + jsonObj.name + ' ---- Table ' + jsonObj.table +  '</div>' + '<br />';
+    div.setAttribute('class', 'order');
+    div.innerHTML += '<div style = "width: 250px; background-color: #484864">' + '<div style = "float: right">' + "$" + jsonObj.price.toFixed(2) + '</div>' + jsonObj.name + ' ---- Table ' + jsonObj.table +  '</div>' + '<br />';
     for (i = 0; i < jsonObj.items.length; i++) {
-      div.innerHTML += jsonObj.items[i].quantity + 'x ' + jsonObj.items[i].item + ' ($' + jsonObj.items[i].price  + ' ea.)' + '<br />';
+      div.innerHTML += jsonObj.items[i].quantity + 'x ' + jsonObj.items[i].item + ' ($' + jsonObj.items[i].price.toFixed(2)  + ' ea.)' + '<br />';
     }
     document.getElementById("main").appendChild(div);
   };
