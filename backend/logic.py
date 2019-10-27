@@ -47,33 +47,45 @@ class Backend:
             v1=f.read()
             v0=json.loads(v1)
             f.close()
-        # TODO
         rec_list=self.rec.recommend_predict(menu_id,user_id)
         rec_names=[]
         for c in range(len(rec_list)):
             rec_names+=[id2food(rec_list[c],v0)]
         v0['recomendation']=rec_list
+        v0['name'] = self.rest_names[menu_id]
         return json.dumps(v0)
 
     def handle_order(self, json_data, customer_id):
         print("Handling order")
         data_dict=json.loads(json_data)
         id=data_dict['restaurant-id']
-        self.send_to_rest(id,json_data)
-        #get restaurant-id
+
+        # Load menu
+        with open(id+".json",'r') as f:
+            menu = [item for item in section['foods'] for section in json.loads(f.read())['sections']]
+            f.close()
+
+        # AI stuff
         order=data_dict['order']
         self.rec.recommend_data_science(id,customer_id,order)
-        #with open(data_dict['restaurant_id']+'.json','r') as f:
-        #    v1=f.read()
-        #    print(v1)
-        #    v0=json.loads(v1)
-        #get price
-        #price=0
-        #food_dict=get_foods(v0)
-        #for c in range(len(data_dict["order"])):
-        #    id=data_dict['order'][c]['item_id']            
-        #    price+=food_dict[id]['price']
-        return 'kys'
+
+        # Generate new format
+        def do_item(item_id, quantity):
+            item = [item for item in menu if item['item-id'] == item_id`]
+            return {
+                    'item': item['name'],
+                    'quantity': quantity,
+                    'price': item['price']
+                }
+        items = [do_item(item['item-id'], item['quantity']) for item in order]
+        order_for_rect = {
+                'name': self.customers[customer_id],
+                'table': data_dict['table-id'],
+                'price': sum(item['quantity'] * item['price'] for item in items),
+                'items': items
+            }
+        self.send_to_rest(id,json.dumps(order_for_rect))
+        return 'order complete'
 
     def get_rest_page_html(self, rest_id):
         rest_name = self.rest_names[rest_id]
