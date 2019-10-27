@@ -8,7 +8,7 @@
                     "name": "Burger",
                     "price": 6.99,
                     "ingredients": ["bread", "beef", "lettuce", "tomato", "cheese"],
-                    "description": "Classic American beef hamburger. Grilled medium-rare and seasoned with a healthy dose of sleep deprivation.",
+                    "description": "Classic American beef hamburger. Grilled medium-well and seasoned with our classic spices.",
                     "image":"burger.jpg"
                 },
                 {
@@ -16,7 +16,7 @@
                     "name": "Steak",
                     "price": 42.99,
                     "ingredients": ["beef", "sauce", "potato"],
-                    "description": "steak, more like i want to die",
+                    "description": "A dinner classic",
                     "image":"steak.jpg"
                 }
             ],
@@ -69,7 +69,7 @@
                     "name": "Water",
                     "price": 2.29,
                     "ingredients": ["water"],
-                    "description": "The main properties of water are its polarity, cohesion, adhesion, surface tension, high specific heat, and evaporative cooling. A water molecule is slightly charged on both ends. This is because oxygen is more electronegative than hydrogen",
+                    "description": "The main component of acid rain.  Kills tens of thousands of people per year.",
                     "image":"water.jpg"
                 },
                 {
