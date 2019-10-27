@@ -43,7 +43,7 @@ class Backend:
 
     def handle_menu(self, menu_id, user_id):
         print("Handling menu", menu_id, "for customer", user_id)
-        with open(menu_id+".json",'r') as f:
+        with open(str(menu_id)+".json",'r') as f:
             v1=f.read()
             v0=json.loads(v1)
             f.close()
