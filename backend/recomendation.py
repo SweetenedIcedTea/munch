@@ -101,7 +101,7 @@ class recomend():
         return max_list
     def recommend_train(self,customer_id,data):
         input_data=data[:,0:self.il_length*7]
-        target_data=data[:,self.il_length*7+7]
+        target_data=data[self.il_length*7,self.il_length*7+7]
         torch_idata=torch.from_numpy(input_data).to(device)
         torch_tdata=torch.from_numpy(target_data).to(device)
         self.account_check(customer_id)
