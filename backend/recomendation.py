@@ -127,12 +127,12 @@ class recomend():
                 target_vec[0,int(list(order_id.keys())[c])-1]=1
         new_vec=np.concatenate([input_vec,target_vec],axis=1)
         #make new data
-        load_data=np.genfromtxt(os.getcwd()+"/ml/"+customer_id+"/history.csv",delimiter=',')
+        load_data=np.genfromtxt(os.getcwd()+"/ml/"+str(customer_id)+"/history.csv",delimiter=',')
         v0=load_data.shape
         if len(v0)==1:
             load_data.shape=[1,self.il_length*7+7]
         self.new_data=np.concatenate([load_data,new_vec],axis=0)
-        np.savetxt(os.getcwd()+"/ml/"+customer_id+"/history.csv",self.new_data,delimiter=',')
+        np.savetxt(os.getcwd()+"/ml/"+str(customer_id)+"/history.csv",self.new_data,delimiter=',')
         self.recommend_train(customer_id,self.new_data)
         return
 if __name__=='__main__':
