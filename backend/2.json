@@ -7,16 +7,24 @@
                     "item-id": 1,
                     "name": "Grilled fish",
                     "price": 69.9,
-                    "ingredients": ["halibut", "garlic", "olive oil", "lemon juice", "salt", "black pepper", "parsley"],
-                    "description": "Flaky white fresh caught fish grilled lightly over my CPU after it tries to run Counter-Strike"
+                    "ingredients": [
+                        "halibut",
+                        "garlic",
+                        "olive oil",
+                        "lemon juice",
+                        "salt",
+                        "black pepper",
+                        "parsley"
+                    ],
+                    "description": "Flaky white fresh caught fish grilled lightly over my laptop running CS:GO",
+                    "image": "halibut.jpg"
                 },
                 {
                     "item-id": 2,
                     "name": "Very nice food",
                     "price": 420.69,
-                    "ingredients": [
-                        "CBD oil"
-                    ],
+                    "ingredients": ["CBD oil"],
+                    "image": "nice.png",
                     "description": "yoooooo it's 4:20 am; that's funny because we didn't sleep."
                 }
             ],
@@ -29,7 +37,8 @@
                     "name": "Caviar",
                     "price": 299,
                     "ingredients": ["fresh caviar", "your life's savings lmao"],
-                    "description": "When you want to flex harder than Matt Yao"
+                    "description": "When you want to flex harder than Matt Yao",
+                    "image": "caviar.jpg"
                 }
             ],
             "section-name": "appetizer"
@@ -41,14 +50,24 @@
                     "name": "Vanilla ice cream",
                     "price": 6.99,
                     "ingredients": ["water", "sugar", "milk", "heavy cream"],
-                    "description": "The most basic of meals"
+                    "description": "The most basic of meals",
+                    "image": "icecream.jpg"
                 },
                 {
                     "item-id": 5,
                     "name": "Yogurt Parfait",
                     "price": 3.99,
-                    "ingredients": ["pasteurized milk", "fresh strawberries", "cream", "whey", "milk protein concentraie", "bacteria", "granola"],
-                    "description": "Yogurt is just fermented milk change my mind"
+                    "ingredients": [
+                        "pasteurized milk",
+                        "fresh strawberries",
+                        "cream",
+                        "whey",
+                        "milk protein concentraie",
+                        "bacteria",
+                        "granola"
+                    ],
+                    "description": "Yogurt is just fermented milk change my mind",
+                    "image":"yogurt.jpg"
                 }
             ],
             "section-name": "dessert"
@@ -60,14 +79,16 @@
                     "name": "Water",
                     "price": 99.99,
                     "ingredients": ["water", "minerals"],
-                    "description": "Sourced straight from Flint, Michigan"
+                    "description": "Sourced straight from Flint, Michigan",
+                    "image":"water.jpg"
                 },
                 {
                     "item-id": 7,
                     "name": "Sweet Water",
                     "price": 199.99,
                     "ingredients": ["water", "sugar"],
-                    "description": "Water but infused with diabetes"
+                    "description": "Water but infused with diabetes",
+                    "image":"sweetwater.jpg"
                 }
             ],
             "section-name": "drinks"

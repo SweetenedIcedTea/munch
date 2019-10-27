@@ -7,15 +7,17 @@
                     "item-id": 1,
                     "name": "Burger",
                     "price": 6.99,
-                    "ingredients": ["bread", "beef", "lettuce", "tomato"],
-                    "description": "borgar"
+                    "ingredients": ["bread", "beef", "lettuce", "tomato", "cheese"],
+                    "description": "Classic American beef hamburger. Grilled medium-rare and seasoned with a healthy dose of sleep deprivation.",
+                    "image":"burger.jpg"
                 },
                 {
                     "item-id": 2,
                     "name": "Steak",
                     "price": 42.99,
                     "ingredients": ["beef", "sauce", "potato"],
-                    "description": "The best steak you've ever had"
+                    "description": "steak, more like i want to die",
+                    "image":"steak.jpg"
                 }
             ],
             "section-name": "bbq"
@@ -33,7 +35,8 @@
                         "olive oil",
                         "ranch dressing"
                     ],
-                    "description": "Leaves but with dressing"
+                    "description": "Leaves but with dressing",
+                    "image":"salad.jpg"
                 }
             ],
             "section-name": "appetizer"
@@ -45,14 +48,16 @@
                     "name": "Fries",
                     "price": 4.29,
                     "ingredients": ["potato"],
-                    "description": "Fish and chips but without the fish"
+                    "description": "Fish and chips but without the fish",
+                    "image":"fries.jpg"
                 },
                 {
                     "item-id": 5,
                     "name": "Coleslaw",
                     "price": 4.29,
                     "ingredients": ["lettuce", "vinegar", "regret"],
-                    "description": "Gross"
+                    "description": "If Zhitong were a food, he would definitely be coleslaw",
+                    "image":"coleslaw.jpg"
                 }
             ],
             "section-name": "sides"
@@ -64,14 +69,16 @@
                     "name": "Water",
                     "price": 2.29,
                     "ingredients": ["water"],
-                    "description": "splish sploosh"
+                    "description": "The main properties of water are its polarity, cohesion, adhesion, surface tension, high specific heat, and evaporative cooling. A water molecule is slightly charged on both ends. This is because oxygen is more electronegative than hydrogen",
+                    "image":"water.jpg"
                 },
                 {
                     "item-id": 7,
                     "name": "Soda",
                     "price": 4.29,
                     "ingredients": ["water", "sugar"],
-                    "description": "The reason we're all level 70 on Steam"
+                    "description": "The reason we're all level 70 on Steam",
+                    "image":"soda.jpg"
                 }
             ],
             "section-name": "drinks"
