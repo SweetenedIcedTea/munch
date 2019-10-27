@@ -6,7 +6,7 @@ export class Menu {
 
     static fromJSON(data: any): Menu {
         const r = new Menu();
-        r.id = data["restaurant-id"];
+        r.id = data["restaurant-id"].toString();
         r.sections = data["sections"].map((sectionJSON: any) =>
             Section.fromJSON(sectionJSON)
         );
@@ -40,7 +40,7 @@ export class FoodItem {
 
     static fromJSON(data: any): FoodItem {
         const f = new FoodItem();
-        f.id = data["item-id"];
+        f.id = data["item-id"].toString();
         f.name = data["name"];
         f.price = data["price"];
         f.ingredients = data["ingredients"];
