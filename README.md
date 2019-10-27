@@ -1,4 +1,4 @@
-# munch
+# munch.
 eat time
 
 ## Interaction Specs
@@ -14,7 +14,6 @@ Returns JSON for menu
 ```json
 { 
     "restaurant-id": 123456,
-    "table-id": 7890,
     "sections": [
         {
             "section-name": "bbq",
@@ -42,7 +41,7 @@ Returns JSON for menu
 {
     "customer-id": 69,
     "restaurant-id": 123456,
-    "table-id": 7890,
+    "table-id": 2,
     "order": [
         {
         "item-id": 654321
@@ -60,4 +59,7 @@ Returns JSON for menu
 
 #### Menu Format
 
-
+#ML buzzword stuff
+ML will have 2 customer preferences.
+Customer 1 will be pretrained to buy cheap stuff.
+Customer 2 will be pretrained to buy vegetarian stuff.
