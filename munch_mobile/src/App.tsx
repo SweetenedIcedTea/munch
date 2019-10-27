@@ -5,6 +5,7 @@ import $ from "jquery";
 import MunchServer from "./API";
 import { Menu } from "./DataClasses";
 import MenuSection from "./components/MenuSection";
+import MenuPage from "./components/MenuPage";
 
 const munch = new MunchServer("http://domainofthebones.com");
 
@@ -80,14 +81,7 @@ export default class App extends Component<AppProps, AppState> {
     renderMenuStage() {
         const menu = this.state.activeMenu!;
         return (
-            <div>
-                <h1>Menu</h1>
-                <ul>
-                    {
-                        menu.sections.map(section => <MenuSection key={section.name} sectionData={section}></MenuSection>)
-                    }
-                </ul>
-            </div>
+            <MenuPage menuData={menu}></MenuPage>
         );
     }
     renderCurrentStage() {
