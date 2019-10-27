@@ -39,7 +39,7 @@ class Backend:
 
     "Data has to be json text (type str)"
     def send_to_rest(self, rest_id, data):
-        self.rests[rest_id].put_noawait(data)
+        self.rests[rest_id].put_nowait(data)
 
     def handle_menu(self, menu_id, user_id):
         print("Handling menu", menu_id, "for customer", user_id)
@@ -67,17 +67,17 @@ class Backend:
 
         # AI stuff
         order=data_dict['order']
-        self.rec.recommend_data_science(id,customer_id,order)
+        #self.rec.recommend_data_science(id,customer_id,order)
 
         # Generate new format
         def do_item(item_id, quantity):
-            item = [item for item in menu if item['item-id'] == item_id]
+            item = [item for item in menu if item['item-id'] == item_id][0]
             return {
                     'item': item['name'],
                     'quantity': quantity,
                     'price': item['price']
                 }
-        items = [do_item(int(item_id), quantity) for item_id, quantity in order]
+        items = [do_item(int(item_id), quantity) for item_id, quantity in order.items() if quantity != 0]
         order_for_rest = {
                 'name': self.customers[customer_id],
                 'table': data_dict['table-id'],
