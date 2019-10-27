@@ -89,9 +89,19 @@
   margin: 0;
   padding: 0;
   background-color: rgb(216, 216, 216);
-  padding: 10px;
+}
+
+.order-summary>* {
+  margin-left: 10px;
 }
 
 .title {
   text-align: center;
+}
+
+.recommended>* {
+  margin-left: 20px;
+}
+.recommended {
+  padding-bottom: 50px;
 }

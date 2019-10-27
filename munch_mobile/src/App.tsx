@@ -74,13 +74,20 @@ export default class App extends Component<AppProps, AppState> {
         
     }
 
+    async onCheckout(foodQty: { [foodId: string]: number }) {
+        await munch.post("order", {
+            "table-id": 1,
+            "order": foodQty
+        });
+    }
+
     renderQRStage() {
         return <RestaurantQR></RestaurantQR>;
     }
     renderMenuStage() {
         const menu = this.state.activeMenu!;
         return (
-            <MenuPage menuData={menu}></MenuPage>
+            <MenuPage menuData={menu} onCheckout={this.onCheckout.bind(this)}></MenuPage>
         );
     }
     renderCurrentStage() {

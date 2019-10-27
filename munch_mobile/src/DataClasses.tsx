@@ -1,6 +1,8 @@
 export class Menu {
     id: string = "";
     sections: Section[] = [];
+    recommended: string[] = [];
+    restaurantName: string = "";
 
     static fromJSON(data: any): Menu {
         const r = new Menu();
@@ -8,7 +10,8 @@ export class Menu {
         r.sections = data["sections"].map((sectionJSON: any) =>
             Section.fromJSON(sectionJSON)
         );
-
+        r.recommended = data["recomendation"].map((numid:any) => numid.toString());
+        r.restaurantName = data["name"];
         return r;
     }
 }
