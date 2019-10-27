@@ -1,3 +1,5 @@
+import {Menu} from './DataClasses';
+
 export default class MunchServer {
     address: string;
     constructor(address: string) {
@@ -6,8 +8,9 @@ export default class MunchServer {
     async testConnection(): Promise<boolean> {
         return (await this.post("echo", "bruh") == "bruh");
     }
-    async getMenu(id: string | number) {
-        return this.get("menu/"+id);
+    async getMenu(id: string | number): Promise<Menu> {
+        const menuJSON = await this.get("menu/"+id);
+        return Menu.fromJSON(menuJSON);
     }
     async get(endpoint: string) {
         try {

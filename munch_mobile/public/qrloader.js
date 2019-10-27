@@ -9,5 +9,3 @@ window.startScanner = ()=>{
     var scanner = new QrScanner(document.getElementById('qr-preview'), window.onScan);
     scanner.start();
 }
-
-startScanner();
