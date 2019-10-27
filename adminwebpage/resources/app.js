@@ -29,12 +29,9 @@ window.onload = function() {
     let jsonObj = JSON.parse(message);
 
     var div = document.createElement("div");
-    div.innerHTML += 'Name: ' + jsonObj.name + '<br>';
-    div.innerHTML += 'Table Number: ' + jsonObj.table + '<br>';
-    div.innerHTML += 'Price: ' + jsonObj.price + '<br>';
-    div.innerHTML += 'Items:' + '<br>';
+    div.innerHTML += '<div style = "width: 150px; background-color: #484864">' + '<div style = "float: right">' + "$" + jsonObj.price + '</div>' + jsonObj.name + ' --- Table ' + jsonObj.table +  '</div>' + <br>';
     for (i = 0; i < jsonObj.items.length; i++) {
-      div.innerHTML += '<blockquote>'+ 'Item: ' + jsonObj.items[i].item + ', Amount: ' + jsonObj.items[i].quantity + ', Unit Price: ' + jsonObj.items[i].price + '</blockquote>';
+      div.innerHTML += jsonObj.items[i].quantity + 'x ' jsonObj.items[i].item +  ' ($' + jsonObj.items[i].price  + ' ea.)';
     }
     document.getElementById("main").appendChild(div);
   };
