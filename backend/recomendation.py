@@ -95,7 +95,7 @@ class recomend():
         max_num=2
         max_list=[]
         for c in range(max_num):
-            max_arg=np.argmax(np_pred,axis=1)[0][0]
+            max_arg=int(np.argmax(np_pred,axis=1)[0])
             max_list+=[max_arg+1]
             np_pred[0,max_arg]=-1
         return max_list
