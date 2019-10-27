@@ -124,7 +124,6 @@ export default class MenuPage extends Component<Props, State> {
                     )}
                 </ul>
                 
-                
             </div>
         );
     }
