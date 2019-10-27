@@ -3,6 +3,7 @@ import torch
 import json
 from custom_net import munch_net
 import torch.nn as nn
+import os
 torch.set_default_tensor_type('torch.DoubleTensor')
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 def load_menu():
@@ -66,8 +67,7 @@ class recommend():
         buy_water[0,5]=1
         v1d_train=np.concatenate([v1d_dset,buy_water],axis=1)
         v2d_train=np.concatenate([v2d_dset,buy_water],axis=1)
-        np.savetxt("v1d.csv",v1d_train,delimiter=',')
-        np.savetxt("v2d.csv",v2d_train,delimiter=',')
+        self.init_train=np.concatenate([v1d_train,v2d_train],axis=0)
         self.munch=munch_net().to(device)
         self.criterion=nn.MSELoss()
         learning_rate=0.01
@@ -75,12 +75,21 @@ class recommend():
         print(v1d)
         print(v2d)
         return
+    def account_check(self,customer_id):
+        customer_id=str(customer_id)
+        v1=os.listdir(os.getcwd()+"/ml/")
+        if (customer_id in v1):
+            self.munch.load_state_dict(torch.load(os.getcwd()+"/ml/"+customer_id+"/net.pt"))
+            return
+        else:
+            os.mkdir(os.getcwd()+"/ml/"+customer_id)
+            self.munch=munch_net().to(device)
+            torch.save(self.munch.state_dict(),os.getcwd()+"/ml/"+customer_id+"/net.pt")
+            np.savetxt(os.getcwd()+"/ml/"+customer_id+"/history.csv",self.init_train,delimiter=',')
+            return
     def recommend_predict(self,restaurant_id,customer_id):
         self.munch.zero_grad()
-        if customer_id==1:
-            self.munch.load_state_dict(torch.load('v1d.pt'))
-        else:
-            self.munch.load_state_dict(torch.load('v2d.pt'))
+        self.account_check(customer_id)
         if restaurant_id==1:
             pred,train_pred=self.munch(torch.from_numpy(self.v1d_dset).to(device))
         else:
@@ -98,10 +107,7 @@ class recommend():
         target_data=data[:,119:119+7]
         torch_idata=torch.from_numpy(input_data).to(device)
         torch_tdata=torch.from_numpy(target_data).to(device)
-        if customer_id==1:
-            self.munch.load_state_dict(torch.load('v1d.pt'))
-        else:
-            self.munch.load_state_dict(torch.load('v2d.pt'))
+        self.account_check(customer_id)
         iters=100
         for c in range(iters):
             self.munch.zero_grad()
@@ -111,46 +117,38 @@ class recommend():
             self.optim.step()
             if c%50==0:
                 print("LOSS: "+str(loss.cpu().detach().numpy()))
-        if customer_id==1:
-            torch.save(self.munch.state_dict(),'v1d.pt')
-        else:
-            torch.save(self.munch.state_dict(),'v2d.pt')
+        torch.save(self.munch.state_dict(),os.getcwd()+"/ml/"+customer_id+"/net.pt")
         return
     def recommend_data_science(self,restaurant_id,customer_id,order_id):
-        order_indice=order_id-1
         if restaurant_id==1:
             input_vec=self.v1d_dset
         else:
             input_vec=self.v2d_dset
         target_vec=np.zeros([1,7])
-        target_vec[0,order_indice]=1
+        for c in range(len(order_id)):
+            target_vec[0,order_id[c]-1]=1
         new_vec=np.concatenate([input_vec,target_vec],axis=1)
         #make new data
-        if customer_id==1:
-            load_data=np.genfromtxt("v1d.csv",delimiter=',')
-        else:
-            load_data=np.genfromtxt("v2d.csv",delimiter=',')
+        load_data=np.genfromtxt(os.getcwd()+"/ml/"+customer_id+"/history.csv",delimiter=',')
         v0=load_data.shape
         if len(v0)==1:
             load_data.shape=[1,126]
         self.new_data=np.concatenate([load_data,new_vec],axis=0)
-        if customer_id==1:
-            np.savetxt("v1d.csv",self.new_data,delimiter=',')
-        else:
-            np.savetxt("v2d.csv",self.new_data,delimiter=',')
+        np.savetxt(os.getcwd()+"/ml/"+customer_id+"/history.csv",self.new_data,delimiter=',')
         self.recommend_train(customer_id,self.new_data)
         return
 if __name__=='__main__':
     rec=recommend()
-    max_list=rec.recommend_predict(2,2)
+    max_list=rec.recommend_predict(2,'1')
+    max_list=rec.recommend_predict(2,'2')
     print(max_list)
     #train_1 first
-    rec.recommend_data_science(1,1,1)
-    rec.recommend_data_science(1,1,3)
-    rec.recommend_data_science(1,1,6)
+    rec.recommend_data_science(1,'1',1)
+    rec.recommend_data_science(1,'1',3)
+    rec.recommend_data_science(1,'1',6)
     #train_2 next
-    print(rec.recommend_predict(2,1))
-    rec.recommend_data_science(1,2,7)
-    rec.recommend_data_science(2,2,7)
-    rec.recommend_data_science(2,2,4)
-    print(rec.recommend_predict(1,2))
+    print(rec.recommend_predict(2,'1'))
+    rec.recommend_data_science(1,'2',7)
+    rec.recommend_data_science(2,'2',7)
+    rec.recommend_data_science(2,'2',4)
+    print(rec.recommend_predict(2,'2'))
