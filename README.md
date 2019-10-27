@@ -1,4 +1,4 @@
-# munch
+# munch.
 eat time
 
 ## Interaction Specs

@@ -6,6 +6,7 @@ import MunchServer from './API';
 
 const munch = new MunchServer('http://domainofthebones.com');
 
+
 class RestaurantQR extends Component {
   scanner: any
 
@@ -13,7 +14,9 @@ class RestaurantQR extends Component {
     super(props);
   }
 
-  componentDidMount () {
+  async componentDidMount () {
+    console.log(await munch.testConnection());
+    console.log(await munch.getMenu("1"));
     (window as any).onDecode = this.onDecode;
   }
 
