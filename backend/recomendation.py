@@ -44,7 +44,7 @@ def make_datasets(menu_dict,ing_list):
             menu_vector[gc,0]=menu_dict['sections'][c]['foods'][c1]['price']
             for c2 in range(len(menu_dict['sections'][c]['foods'][c1]['ingredients'])):
                 loc_indice=ing_list.index(menu_dict['sections'][c]['foods'][c1]['ingredients'][c2])
-                menu_vector[gc,loc_indice+1]=1
+                menu_vector[gc,loc_indice]=1
             gc+=1
     return menu_vector
 #ing_list,v1d,v2d=load_menu()
