@@ -12,7 +12,7 @@ class Handler:
         self.backend = backend
 
     async def handle_favicon(self, request):
-        with open('../adminwebpage/resources/pictures/munch.ico', 'b') as f:
+        with open('../adminwebpage/resources/pictures/munch.ico', 'rb') as f:
             content = f.read()
         return web.Response(body = content, content_type = 'image/x-icon')
 
