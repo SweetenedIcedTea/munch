@@ -105,3 +105,41 @@
 .recommended {
   padding-bottom: 50px;
 }
+
+.end-card {
+  text-align: center;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #5C1C1C;
+  height: 60px;
+}
+
+.topnav a {
+  float: right;
+  color: #ccc;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  color: #fff;
+}
+.topnav div {
+  color: #fff;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 36px;
+}
+.logo {
+  margin: 0;
+  float: left;
+  position: absolute;
+  width: 116px;
+  height: 60px;
+  margin-left: 10px;
+  object-fit: contain;
+}
