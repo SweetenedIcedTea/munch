@@ -14,7 +14,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 10px;
 }
 
 .meal-thumb {
@@ -30,6 +29,7 @@
 
 .meal-box>* {
   vertical-align: top;
+  margin: 10px;
 }
 
 .meal-info {
@@ -44,10 +44,64 @@
   margin: 0;
 }
 
+.meal-info>i>p  {
+  margin: 0;
+}
+
 .meal-desc {
   grid-row: 2;
 }
 .price-tag {
   justify-self: end;
   grid-row: 2;
+}
+
+.ingredients {
+  font-size: 10pt;
+  grid-row: 3;
+}
+
+.order-input {
+  grid-row: 4;
+}
+
+.order-input-quantity {
+  font-size: 10pt;
+  display: inline;
+  margin-left:10px;
+}
+
+.breakdown-row {
+  display: grid;
+  grid-template-columns: 100px 20px;
+}
+
+.breakdown-row>p{
+  margin: 5px;
+}
+
+.breakdown-name {
+  grid-column: 1;
+}
+
+.order-summary {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(216, 216, 216);
+}
+
+.order-summary>* {
+  margin-left: 10px;
+}
+
+.title {
+  text-align: center;
+}
+
+.recommended>* {
+  margin-left: 20px;
+}
+.recommended {
+  padding-bottom: 50px;
 }
