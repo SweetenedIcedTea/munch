@@ -101,7 +101,7 @@ class recomend():
         return max_list
     def recommend_train(self,customer_id,data):
         input_data=data[:,0:self.il_length*7]
-        target_data=data[:,il_length*7+7]
+        target_data=data[:,self.il_length*7+7]
         torch_idata=torch.from_numpy(input_data).to(device)
         torch_tdata=torch.from_numpy(target_data).to(device)
         self.account_check(customer_id)
@@ -122,8 +122,9 @@ class recomend():
         else:
             input_vec=self.v2d_dset
         target_vec=np.zeros([1,7])
-        for c in range(len(order_id)):
-            target_vec[0,order_id[c]-1]=1
+        for c in range(len(list(order_id.keys()))):
+            if order_id[list(order_id.keys())[c]]!=0:
+                target_vec[0,int(list(order_id.keys())[c])-1]=1
         new_vec=np.concatenate([input_vec,target_vec],axis=1)
         #make new data
         load_data=np.genfromtxt(os.getcwd()+"/ml/"+customer_id+"/history.csv",delimiter=',')
@@ -135,7 +136,7 @@ class recomend():
         self.recommend_train(customer_id,self.new_data)
         return
 if __name__=='__main__':
-    rec=recommend()
+    rec=recomend()
     max_list=rec.recommend_predict(2,'1')
     max_list=rec.recommend_predict(2,'2')
     print(max_list)
