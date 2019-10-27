@@ -5,7 +5,9 @@ export class Menu {
     static fromJSON(data: any): Menu {
         const r = new Menu();
         r.id = data["restaurant-id"];
-        r.sections = data["sections"].map((sectionJSON: any) => Section.fromJSON(sectionJSON));
+        r.sections = data["sections"].map((sectionJSON: any) =>
+            Section.fromJSON(sectionJSON)
+        );
 
         return r;
     }
@@ -18,7 +20,9 @@ export class Section {
     static fromJSON(data: any): Section {
         const s = new Section();
         s.name = data["section-name"];
-        s.foods = data["foods"].map((foodJSON: any) => FoodItem.fromJSON(foodJSON));
+        s.foods = data["foods"].map((foodJSON: any) =>
+            FoodItem.fromJSON(foodJSON)
+        );
         return s;
     }
 }
@@ -41,5 +45,4 @@ export class FoodItem {
         f.image = data["image"];
         return f;
     }
-
 }
