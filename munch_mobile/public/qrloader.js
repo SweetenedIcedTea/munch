@@ -12,7 +12,7 @@ window.startScanner = ()=>{
     console.log("[qrloader] Started QR Reader")
     scanner = new QrScanner(document.getElementById('qr-preview'), window.onScan);
     scanner.start();
-    window.onScan("1");
+    window.onScan("2");
 }
 
 window.stopScanner = () => {
