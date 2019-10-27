@@ -37,7 +37,7 @@ def load_menu():
     print(food_count_1,food_count_2)
     return ing_list,v1d,v2d
 def make_datasets(menu_dict,ing_list):
-    menu_vector=np.zeros([7,17])
+    menu_vector=np.zeros([7,len(ing_list)])
     gc=0
     for c in range(len(menu_dict['sections'])):
         for c1 in range(len(menu_dict['sections'][c]['foods'])):
