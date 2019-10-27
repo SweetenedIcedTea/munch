@@ -66,17 +66,25 @@ export default class App extends Component<AppProps, AppState> {
 
     async onScanResolved(QRData: string) {
         this.setState({
-            activeMenu: await munch.getMenu(QRData)
+            activeMenu: await munch.getMenu(QRData),
+            stage: 'menu'
         });
         console.log(this.state.activeMenu);
+        
     }
 
     renderQRStage() {
         return <RestaurantQR></RestaurantQR>;
     }
+    renderMenuStage() {
+        return (<code>
+            {JSON.stringify(this.state.activeMenu!)}
+        </code>);
+    }
     renderCurrentStage() {
         const stageRenderers: { [stageName: string]: Function } = {
-            scanning: this.renderQRStage.bind(this)
+            scanning: this.renderQRStage.bind(this),
+            menu: this.renderMenuStage.bind(this)
         };
         return stageRenderers[this.state.stage]();
     }
