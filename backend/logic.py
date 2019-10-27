@@ -67,7 +67,7 @@ class Backend:
 
         # AI stuff
         order=data_dict['order']
-        #self.rec.recommend_data_science(id,customer_id,order)
+        self.rec.recommend_data_science(id,customer_id,order)
 
         # Generate new format
         def do_item(item_id, quantity):
