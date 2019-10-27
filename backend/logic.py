@@ -40,7 +40,7 @@ class Backend:
             v0=json.loads(v1)
             f.close()
         # TODO
-        rec_list=self.rec.predict(menu_id,user_id)
+        rec_list=self.rec.recommend_predict(menu_id,user_id)
         v0['recomendation']=rec_list
         return json.dumps(v0)
 
