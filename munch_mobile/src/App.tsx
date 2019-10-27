@@ -77,6 +77,7 @@ export default class App extends Component<AppProps, AppState> {
     async onCheckout(foodQty: { [foodId: string]: number }) {
         await munch.post("order", {
             "table-id": 1,
+            "restaurant-id": parseInt(this.state.activeMenu!.id),
             "order": foodQty
         });
     }
