@@ -38,6 +38,7 @@ interface AppState {
     stage: string;
     failedToConnect: boolean;
     activeMenu?: Menu;
+    table: string;
 }
 
 interface AppProps {}
@@ -47,7 +48,8 @@ export default class App extends Component<AppProps, AppState> {
         super(props);
         this.state = {
             stage: "scanning",
-            failedToConnect: false
+            failedToConnect: false,
+            table: ""
         };
         (window as any).onScanResolved = this.onScanResolved.bind(this);
     }
@@ -65,9 +67,9 @@ export default class App extends Component<AppProps, AppState> {
         }
     }
 
-    async onScanResolved(QRData: string) {
+    async onScanResolved(id: string, table: string) {
         this.setState({
-            activeMenu: await munch.getMenu(QRData),
+            activeMenu: await munch.getMenu(id),
             stage: 'menu'
         });
         console.log(this.state.activeMenu);
@@ -79,7 +81,7 @@ export default class App extends Component<AppProps, AppState> {
             stage:'thanks'
         });
         await munch.post("order", {
-            "table-id": 1,
+            "table-id": parseInt(this.state.table),
             "restaurant-id": parseInt(this.state.activeMenu!.id),
             "order": foodQty
         });
