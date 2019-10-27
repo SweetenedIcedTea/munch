@@ -11,6 +11,7 @@ def get_foods(menu_dict):
 class Backend:
     def __init__(self):
         self.rests = {}
+        self.rest_names = {1: "Jeff's Joint", 2: "Paul's Place"}
         self.rec=recomend()
         self.customers = {}
         self.next_customer_id = 2
@@ -65,5 +66,7 @@ class Backend:
         return 'kys'
 
     def get_rest_page_html(self, rest_id):
-        # TODO
-        return 'halp'
+        rest_name = self.rest_names[rest_id]
+        with open('../adminwebpage/restuarantPages/restHome.html') as f:
+            content = f.read()
+        return content.format(rest_name = rest_name)
