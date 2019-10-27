@@ -23,17 +23,19 @@ window.onload = function() {
 
   // Handle messages sent by the server.
   socket.onmessage = function(event) {
+    var i;
     var message = event.data;
     //messagesList.innerHTML += 'recieved: ' + message + '<p>';
     let jsonObj = JSON.parse(message);
 
     var div = document.createElement("div");
-    div.style.width = "100px";
-    div.style.height = "100px";
-    div.style.background = "red";
-    div.style.color = "white";
-    div.innerHTML = "Hello";
-
+    div.innerHTML += 'Name' + jsonObj.name + '<br>';
+    div.innerHTML += 'Table Number' + jsonObj.table + '<br>';
+    div.innerHTML += 'Price' + jsonObj.price + '<br>';
+    div.innerHTML += 'Items:' + '<br>';
+    for (i = 0; i < jsonObj.items.length; i++) {
+      div.innerHTML += '<blockquote>'+ 'Item: ' + jsonObj.items[i].item + ', Amount: ' + jsonObj.items[i].quantity + ', Unit Price: ' + jsonObj.items[i].price + '</blockquote>';
+    }
     document.getElementById("main").appendChild(div);
   };
 
