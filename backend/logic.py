@@ -42,7 +42,7 @@ class Backend:
         self.rests[rest_id].put_noawait(data)
 
     def handle_menu(self, menu_id, user_id):
-        print("Handling menu", menu_id)
+        print("Handling menu", menu_id, "for customer", user_id)
         with open(menu_id+".json",'r') as f:
             v1=f.read()
             v0=json.loads(v1)
@@ -55,13 +55,12 @@ class Backend:
         v0['recomendation']=rec_list
         return json.dumps(v0)
 
-    def handle_order(self, json_data):
+    def handle_order(self, json_data, customer_id):
         print("Handling order")
         data_dict=json.loads(json_data)
         id=data_dict['restaurant-id']
         self.send_to_rest(id,json_data)
         #get restaurant-id
-        customer_id=data_dict['customer-id']
         order=data_dict['order']
         self.rec.recommend_data_science(id,customer_id,order)
         #with open(data_dict['restaurant_id']+'.json','r') as f:

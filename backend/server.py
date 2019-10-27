@@ -43,13 +43,14 @@ class Handler:
 
     async def handle_menu(self, request):
         menu_id = request.match_info.get('menu_id')
-        customer_id = request.cookies['customer_id']
+        customer_id = int(request.cookies['customer_id'])
         result = self.backend.handle_menu(menu_id, customer_id)
         return web.Response(text = result)
 
     async def handle_order(self, request):
         json = await request.read()
-        result = self.backend.handle_order(json.decode())
+        customer_id = int(request.cookies['customer_id'])
+        result = self.backend.handle_order(json.decode(), customer_id)
         return web.Response(text = result)
 
     async def handle_echo(self, request):
