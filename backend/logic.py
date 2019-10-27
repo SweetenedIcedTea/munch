@@ -23,18 +23,16 @@ class Backend:
     def send_to_rest(self, rest_id, data):
         self.rests[rest_id].put_noawait(data)
 
-    def handle_menu(self, menu_id):
+    def handle_menu(self, menu_id, user_id):
         print("Handling menu", menu_id)
         with open(menu_id+".json",'r') as f:
             v1=f.read()
             print(v1)
             v0=json.loads(v1)
             f.close()
-        return json.dumps(v0)
-
-    def get_recommendations(self, customer_id, restaurant_id):
         # TODO
-        # returns a string of json
+        # Add recommendations to JSON
+        return json.dumps(v0)
 
     def handle_order(self, json_data):
         print("Handling order")
