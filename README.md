@@ -1,4 +1,4 @@
-# munch
+# munch.
 eat time
 
 ## Interaction Specs
@@ -59,4 +59,7 @@ Returns JSON for menu
 
 #### Menu Format
 
-
+#ML buzzword stuff
+ML will have 2 customer preferences.
+Customer 1 will be pretrained to buy cheap stuff.
+Customer 2 will be pretrained to buy vegetarian stuff.
