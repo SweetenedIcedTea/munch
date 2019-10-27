@@ -101,7 +101,7 @@ class recomend():
         return max_list
     def recommend_train(self,customer_id,data):
         input_data=data[:,0:self.il_length*7]
-        target_data=data[self.il_length*7,self.il_length*7+7]
+        target_data=data[:,self.il_length*7:self.il_length*7+7]
         torch_idata=torch.from_numpy(input_data).to(device)
         torch_tdata=torch.from_numpy(target_data).to(device)
         self.account_check(customer_id)
@@ -114,7 +114,7 @@ class recomend():
             self.optim.step()
             if c%50==0:
                 print("LOSS: "+str(loss.cpu().detach().numpy()))
-        torch.save(self.munch.state_dict(),os.getcwd()+"/ml/"+customer_id+"/net.pt")
+        torch.save(self.munch.state_dict(),os.getcwd()+"/ml/"+str(customer_id)+"/net.pt")
         return
     def recommend_data_science(self,restaurant_id,customer_id,order_id):
         if restaurant_id==1:
