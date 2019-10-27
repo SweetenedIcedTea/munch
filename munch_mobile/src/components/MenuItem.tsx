@@ -3,6 +3,8 @@ import { FoodItem } from "../DataClasses";
 
 interface Props {
     foodData: FoodItem;
+    quantities: { [foodId: string]: number };
+    onIncrement: Function;
 }
 
 interface State {}
@@ -28,7 +30,13 @@ export default class MenuItem extends Component<Props, State> {
                         </p>
                     </i>
                     <span className="order-input">
-                        <button>Add to order</button>
+                        <button onClick={()=>{
+                            this.props.onIncrement(this.food.id, 1)
+                        }}>+</button>
+                        <button disabled={this.props.quantities[this.food.id] == 0} onClick={()=>{
+                            this.props.onIncrement(this.food.id, -1)
+                        }}>-</button>
+                        <p className="order-input-quantity">Quantity: {this.props.quantities[this.food.id]}</p>
                     </span>
                 </div>
             </span>

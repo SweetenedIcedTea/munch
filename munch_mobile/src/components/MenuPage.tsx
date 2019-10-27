@@ -1,52 +1,122 @@
 import React, { Component } from "react";
-import { FoodItem, Menu } from "../DataClasses";
-import MenuSection from "./MenuSection";
+import { FoodItem, Menu, Section } from "../DataClasses";
+import MenuItem from "./MenuItem";
 
 interface Props {
     menuData: Menu;
-    
 }
 
 interface State {
-    foodQty: { [foodName: string]: number };
+    foodQty: { [foodId: string]: number };
 }
 
 export default class MenuPage extends Component<Props, State> {
+    idTable: { [foodId: string]: string } = {};
+    priceTable: { [foodId: string]: number } = {};
     constructor(props: Props) {
         super(props);
 
-        const foodQty: { [foodName: string]: number } = {};
+        const foodQty: { [foodId: string]: number } = {};
+
         for (const section of this.props.menuData.sections) {
             for (const food of section.foods) {
-                foodQty[food.name] = 0;
+                foodQty[food.id] = 0;
+                this.idTable[food.id] = food.name;
+                this.priceTable[food.id] = food.price;
             }
         }
-
+        console.log(foodQty);
         this.state = {
             foodQty: foodQty
         };
     }
     hasOrderedAnything() {
-        for (const foodName in this.state.foodQty) {
-            const qty = this.state.foodQty[foodName];
+        for (const foodId in this.state.foodQty) {
+            const qty = this.state.foodQty[foodId];
             if (qty != 0) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
+
+    onIncrement(id: string, by: number) {
+        const foodQty: { [foodId: string]: number } = {};
+
+        for (const foodId in this.state.foodQty) {
+            foodQty[foodId] =
+                this.state.foodQty[foodId] + (id == foodId ? 1 : 0)*by;
+        }
+
+        this.setState({
+            foodQty: foodQty
+        });
+    }
+
+    renderSection(section: Section) {
+        return (
+            <div key={section.name}>
+                <h1>{section.name}</h1>
+                <ul>
+                    {section.foods.map(food => (
+                        <MenuItem
+                            key={food.id}
+                            foodData={food}
+                            quantities={this.state.foodQty}
+                            onIncrement={this.onIncrement.bind(this)}
+                        ></MenuItem>
+                    ))}
+                </ul>
+            </div>
+        );
+    }
+
+    getTotalOrderCost() {
+        var cost = 0;
+        for (const foodId in this.state.foodQty) {
+            const qty = this.state.foodQty[foodId];
+            const price = this.priceTable[foodId];
+
+            cost+=qty*price;
+        }
+        return Number(cost).toFixed(2);
+    }
+
+    renderBreakdown() {
+        // the only breakdown is the one im having rn
+        const listItems: JSX.Element[] = [];
+        for (const foodId in this.state.foodQty) {
+            const qty = this.state.foodQty[foodId];
+
+            if (qty != 0) {
+                listItems.push(
+                    <span key={foodId} className="breakdown-row">
+                        <p className="breakdown-name">{this.idTable[foodId]}</p>
+                        <p className="breakdown-qty">x{qty}</p>
+                    </span>
+                );
+            }
+        }
+        return (
+            <div className="order-summary">
+                <h2>Your order</h2>
+                <ul>{listItems}</ul>
+                <h3>Total: {this.getTotalOrderCost()}</h3>
+                <button>Checkout</button>
+            </div>
+           
+        );
+    }
+
     render() {
         return (
             <div>
-                <h1>Menu</h1>
-
+                {this.hasOrderedAnything() ? this.renderBreakdown() : null}
+                <h1 className="title">Menu</h1>
                 <ul>
-                    {this.props.menuData.sections.map(section => (
-                        <MenuSection
-                            key={section.name}
-                            sectionData={section}
-                        ></MenuSection>
-                    ))}
+                    {this.props.menuData.sections.map(
+                        this.renderSection.bind(this)
+                    )}
                 </ul>
             </div>
         );

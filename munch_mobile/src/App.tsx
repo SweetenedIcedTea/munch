@@ -4,7 +4,6 @@ import "./App.css";
 import $ from "jquery";
 import MunchServer from "./API";
 import { Menu } from "./DataClasses";
-import MenuSection from "./components/MenuSection";
 import MenuPage from "./components/MenuPage";
 
 const munch = new MunchServer("http://domainofthebones.com");
@@ -95,3 +94,4 @@ export default class App extends Component<AppProps, AppState> {
         return <div className="App">{this.renderCurrentStage()}</div>;
     }
 }
+

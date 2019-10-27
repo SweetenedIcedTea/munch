@@ -64,3 +64,34 @@
 .order-input {
   grid-row: 4;
 }
+
+.order-input-quantity {
+  font-size: 10pt;
+  display: inline;
+  margin-left:10px;
+}
+
+.breakdown-row {
+  display: grid;
+  grid-template-columns: 100px 20px;
+}
+
+.breakdown-row>p{
+  margin: 5px;
+}
+
+.breakdown-name {
+  grid-column: 1;
+}
+
+.order-summary {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(216, 216, 216);
+  padding: 10px;
+}
+
+.title {
+  text-align: center;
+}
