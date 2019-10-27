@@ -4,7 +4,6 @@ window.onload = function() {
   var form = document.getElementById('message-form');
   var messageField = document.getElementById('message');
   var messagesList = document.getElementById('messages');
-  var socketStatus = document.getElementById('status');
   var closeBtn = document.getElementById('close');
   var nextId = 0
 
@@ -13,8 +12,6 @@ window.onload = function() {
 
   // Show a connected message when the WebSocket is opened.
   socket.onopen = function(event) {
-    socketStatus.innerHTML = 'Connected to: ' + event.currentTarget.url;
-    socketStatus.className = 'open';
   };
 
   // Handle any errors that occur.
@@ -37,7 +34,7 @@ window.onload = function() {
     for (i = 0; i < jsonObj.items.length; i++) {
       div.innerHTML += jsonObj.items[i].quantity + 'x ' + jsonObj.items[i].item + ' ($' + jsonObj.items[i].price.toFixed(2)  + ' ea.)' + '<br />';
     }
-    div.innerHTML += '<div style = "float: right"> <a href = "javascript.document.getElementById(\'" + nextID.toString() + "\').setAttribute(\'class\', \'done\')"> Complete </a></div>'
+    div.innerHTML += '<div style = "float: right"> <a href = "javascript:document.getElementById(\'' + nextId.toString() + '\').setAttribute(\'class\', \'done\')"> Complete </a></div>'
     nextId++;
     document.getElementById("main").appendChild(div);
   };
@@ -47,26 +44,6 @@ window.onload = function() {
   socket.onclose = function(event) {
     socketStatus.innerHTML = 'Disconnected from WebSocket Server.';
     socketStatus.className = 'closed';
-  };
-
-
-  // Send a message when the form is submitted.
-  form.onsubmit = function(e) {
-    e.preventDefault();
-
-    // Retrieve the message from the textarea.
-    var message = messageField.value;
-
-    // Send the message through the WebSocket.
-    socket.send(message);
-
-    // Add the message to the messages list.
-    // messagesList.innerHTML += message
-
-    // Clear out the message field.
-    messageField.value = '';
-
-    return false;
   };
 
 

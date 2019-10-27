@@ -19,7 +19,7 @@ class Handler:
     async def handle_index_get(self, request):
         if 'customer_id' in request.cookies:
             customer_id = int(request.cookies['customer_id'])
-            return web.Response(text = "Hi, customer %d" % customer_id)
+            return web.Response(body = read_file('../static_stuff/index.html'), content_type = 'text/html')
         else:
             return web.Response(body = read_file('../adminwebpage/customerPages/main.html'), content_type = 'text/html')
 

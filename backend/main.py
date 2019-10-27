@@ -3,6 +3,13 @@ from aiohttp import web
 from logic import Backend
 from server import Handler
 
+def make_static_js(path):
+    async def handler(request):
+        with open('../static_stuff' + request.path) as f:
+            content = f.read()
+        return web.Response(body = content, content_type = 'text/javascript')
+    return web.get(path, handler)
+
 def main():
     backend = Backend()
     handler = Handler(backend)
@@ -18,7 +25,12 @@ def main():
         web.get('/rest', handler.handle_websocket),
         web.get('/rest_page', handler.handle_rest_page_get),
         web.post('/rest_page', handler.handle_rest_page_post),
-        web.static('/resources', '../adminwebpage/resources')])
+        web.static('/resources', '../adminwebpage/resources'),
+        make_static_js('/qrloader.js'),
+        make_static_js('/qr-scanner.min.js'),
+        make_static_js('/qr-scanner-worker.min.js'),
+        web.static('/static', '../static_stuff/static')
+        ])
     web.run_app(app, port=80)
 
 if __name__ == '__main__':
