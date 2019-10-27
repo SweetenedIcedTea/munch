@@ -20,7 +20,7 @@
                     "description": "yoooooo it's 4:20 am; that's funny because we didn't sleep."
                 }
             ],
-            "section_name": "entree"
+            "section-name": "entree"
         },
         {
             "foods": [
@@ -32,7 +32,7 @@
                     "description": "When you want to flex harder than Matt Yao"
                 }
             ],
-            "section_name": "appetizer"
+            "section-name": "appetizer"
         },
         {
             "foods": [
@@ -51,7 +51,7 @@
                     "description": "Yogurt is just fermented milk change my mind"
                 }
             ],
-            "section_name": "dessert"
+            "section-name": "dessert"
         },
         {
             "foods": [
@@ -77,7 +77,7 @@
                     "description": "Perfect for washing away the memory of Mr. Petrizzi's calculus test"
                 }
             ],
-            "section_name": "drinks"
+            "section-name": "drinks"
         }
     ]
 }
