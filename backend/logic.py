@@ -7,11 +7,15 @@ def get_foods(menu_dict):
             v0=menu_dict['sections'][c]['foods'][c1]
             food_dict[v0['item-id']]=v0
     return food_dict
-
+def id2food(id,menu_dict):
+    for c in range(len(menu_dict['sections'])):
+        for c1 in range(len(menu_dict['sections'[c]['foods']])):
+            if menu_dict['sections'][c]['foods'][c1]['item_id']==id:
+                return menu_dict['sections'][c]['foods'][c1]['name']
+    return 'none'
 class Backend:
     def __init__(self):
         self.rests = {}
-        self.rest_names = {1: "Jeff's Joint", 2: "Paul's Place"}
         self.rec=recomend()
         self.customers = {}
         self.next_customer_id = 2
@@ -41,6 +45,9 @@ class Backend:
             f.close()
         # TODO
         rec_list=self.rec.recommend_predict(menu_id,user_id)
+        rec_names=[]
+        for c in range(len(rec_list)):
+            rec_names+=[id2food(rec_list[c],v0)]
         v0['recomendation']=rec_list
         return json.dumps(v0)
 
@@ -66,7 +73,5 @@ class Backend:
         return 'kys'
 
     def get_rest_page_html(self, rest_id):
-        rest_name = self.rest_names[rest_id]
-        with open('../adminwebpage/restuarantPages/restHome.html') as f:
-            content = f.read()
-        return content.format(rest_name = rest_name)
+        # TODO
+        return 'halp'
