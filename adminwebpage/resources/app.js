@@ -29,9 +29,9 @@ window.onload = function() {
     let jsonObj = JSON.parse(message);
 
     var div = document.createElement("div");
-    div.innerHTML += 'Name' + jsonObj.name + '<br>';
-    div.innerHTML += 'Table Number' + jsonObj.table + '<br>';
-    div.innerHTML += 'Price' + jsonObj.price + '<br>';
+    div.innerHTML += 'Name: ' + jsonObj.name + '<br>';
+    div.innerHTML += 'Table Number: ' + jsonObj.table + '<br>';
+    div.innerHTML += 'Price: ' + jsonObj.price + '<br>';
     div.innerHTML += 'Items:' + '<br>';
     for (i = 0; i < jsonObj.items.length; i++) {
       div.innerHTML += '<blockquote>'+ 'Item: ' + jsonObj.items[i].item + ', Amount: ' + jsonObj.items[i].quantity + ', Unit Price: ' + jsonObj.items[i].price + '</blockquote>';
