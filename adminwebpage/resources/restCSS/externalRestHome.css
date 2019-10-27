@@ -29,13 +29,14 @@ body {
   text-decoration: none;
   font-size: 36px;
 }
-div.logo {
+.logo {
   margin: 0;
   float: left;
   position: absolute;
   width: 116px;
-  height: 42px;
-  object-fit: scale-down;
+  height: 60px;
+  margin-left: 10px;
+  object-fit: contain;
 }
 
 div.order{
