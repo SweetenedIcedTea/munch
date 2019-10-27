@@ -1,6 +1,8 @@
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  background-color: #5C1C1C;
 }
 
 .topnav {

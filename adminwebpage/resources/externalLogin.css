@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  background-color: #5C1C1C;
+}
+
+.logobox {
+  margin: auto;
+  margin-top: 6%;
+  width: 633px;
+  background-color: #ad0c1b;
+  border-style: solid;
+  border-width: 20px;
+  border-color: #ad0c1b;
+  border-radius: 7px;
+}
+
+.loginbox {
+  padding: 20px 20px 0px 20px;
+  margin: auto;
+  margin-top: 4%;
+  width: 500px;
+  background-color: #ad0c1b;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #ad0c1b;
+  border-radius: 10px;
+}
+
+.tb {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  color: black;
+  margin: auto;
+  font-size: 25pt;
+	border: 5px;
+  background-color: white;
+	border-radius: 40px;
+	height: 6%;
+	width: 500px;
+  outline: none;
+  vertical-align: middle;
+}
+
+.logButtDiv {
+  background-color: green;
+  margin-top: 50%;
+  width: 50px;
+  margin: auto;
+}

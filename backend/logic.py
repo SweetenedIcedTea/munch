@@ -40,7 +40,7 @@ class Backend:
             v0=json.loads(v1)
             f.close()
         # TODO
-        rec_list=self.rec.predict(menu_id,user_id)
+        rec_list=self.rec.recommend_predict(menu_id,user_id)
         v0['recomendation']=rec_list
         return json.dumps(v0)
 
@@ -52,7 +52,7 @@ class Backend:
         #get restaurant-id
         customer_id=data_dict['customer-id']
         order=data_dict['order']
-        self.rec.reccomend_data_science(id,customer_id,order)
+        self.rec.recommend_data_science(id,customer_id,order)
         #with open(data_dict['restaurant_id']+'.json','r') as f:
         #    v1=f.read()
         #    print(v1)

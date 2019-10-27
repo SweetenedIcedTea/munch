@@ -33,34 +33,33 @@ def load_menu():
             for c2 in range(len(ingredient['ingredients'])):
                 if not(ingredient['ingredients'][c2] in ing_list):
                     ing_list+=[ingredient['ingredients'][c2]]
-    print(ing_list)
-    print(food_count_1,food_count_2)
     return ing_list,v1d,v2d
 def make_datasets(menu_dict,ing_list):
-    menu_vector=np.zeros([7,17])
+    menu_vector=np.zeros([7,len(ing_list)])
     gc=0
     for c in range(len(menu_dict['sections'])):
         for c1 in range(len(menu_dict['sections'][c]['foods'])):
             menu_vector[gc,0]=menu_dict['sections'][c]['foods'][c1]['price']
             for c2 in range(len(menu_dict['sections'][c]['foods'][c1]['ingredients'])):
                 loc_indice=ing_list.index(menu_dict['sections'][c]['foods'][c1]['ingredients'][c2])
-                menu_vector[gc,loc_indice+1]=1
+                menu_vector[gc,loc_indice]=1
             gc+=1
     return menu_vector
 #ing_list,v1d,v2d=load_menu()
 #print(v1d)
 #menu_vector=make_datasets(v1d,ing_list)
 #print(menu_vector)
-class recommend():
+class recomend():
     def __init__(self):
         ing_list,v1d,v2d=load_menu()
         self.v1d=v1d
         self.v2d=v2d
         self.ing_list=ing_list
+        self.il_length=len(ing_list)
         v1d_dset=make_datasets(v1d,ing_list)
         v2d_dset=make_datasets(v2d,ing_list)
-        v1d_dset.shape=[1,119]
-        v2d_dset.shape=[1,119]
+        v1d_dset.shape=[1,self.il_length*7]
+        v2d_dset.shape=[1,self.il_length*7]
         self.v1d_dset=v1d_dset
         self.v2d_dset=v2d_dset
         buy_water=np.zeros([1,7])
@@ -68,12 +67,10 @@ class recommend():
         v1d_train=np.concatenate([v1d_dset,buy_water],axis=1)
         v2d_train=np.concatenate([v2d_dset,buy_water],axis=1)
         self.init_train=np.concatenate([v1d_train,v2d_train],axis=0)
-        self.munch=munch_net().to(device)
+        self.munch=munch_net(self.il_length).to(device)
         self.criterion=nn.MSELoss()
         learning_rate=0.01
         self.optim=torch.optim.Adam(self.munch.parameters(), lr = learning_rate,weight_decay=0.000)
-        print(v1d)
-        print(v2d)
         return
     def account_check(self,customer_id):
         customer_id=str(customer_id)
@@ -83,7 +80,7 @@ class recommend():
             return
         else:
             os.mkdir(os.getcwd()+"/ml/"+customer_id)
-            self.munch=munch_net().to(device)
+            self.munch=munch_net(self.il_length).to(device)
             torch.save(self.munch.state_dict(),os.getcwd()+"/ml/"+customer_id+"/net.pt")
             np.savetxt(os.getcwd()+"/ml/"+customer_id+"/history.csv",self.init_train,delimiter=',')
             return
@@ -103,8 +100,8 @@ class recommend():
             np_pred[0,max_arg]=-1
         return max_list
     def recommend_train(self,customer_id,data):
-        input_data=data[:,0:119]
-        target_data=data[:,119:119+7]
+        input_data=data[:,0:self.il_length*7]
+        target_data=data[:,il_length*7+7]
         torch_idata=torch.from_numpy(input_data).to(device)
         torch_tdata=torch.from_numpy(target_data).to(device)
         self.account_check(customer_id)

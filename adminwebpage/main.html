@@ -1,14 +1,26 @@
 <html>
 <head>
-<script type="text/javascript" src="util.js"></script>
+  <script src="/Users/sweetenedicedtea/Desktop/munchApp/munch/adminwebpage/resources/app.js"></script>
+  <script type="text/javascript" src="/Users/sweetenedicedtea/Desktop/munchApp/munch/adminwebpage/resources/util.js"></script>
+  <link rel = "stylesheet" type = "text/css" href = "/Users/sweetenedicedtea/Desktop/munchApp/munch/adminwebpage/resources/externalLogin.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <title>kill me</title>
 </head>
 <body>
-  <form name="login">
-           Username<input type="text" name="userid"/>
-           Password<input type="password" name="pswrd"/>
-           <input type="button" onclick="checkLogin(this.form)" value="Login"/>
-           <input type="reset" value="Cancel"/>
-       </form>
+
+  <div class = "logobox">
+    <img src = "/Users/sweetenedicedtea/Desktop/munchApp/munch/pictures/munchLogoTrans.png">
+  </div>
+
+  <div class = "loginbox">
+      <form action = "/rest-page" method = "post">
+        <input type = "text" class = "tb" name = "id">
+        <div class = "logButtDiv">
+          <button type = "submit">Login</button>
+        </div>
+      </form>
+  </div>
+
+  <div id="status">Connecting...</div>
 </body>
 </html>

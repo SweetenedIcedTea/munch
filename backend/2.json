@@ -68,13 +68,6 @@
                     "price": 199.99,
                     "ingredients": ["water", "sugar"],
                     "description": "Water but infused with diabetes"
-                },
-                {
-                    "item-id": 8,
-                    "name": "Vodka",
-                    "price": 299.99,
-                    "ingredients": ["premium russian tap water"],
-                    "description": "Perfect for washing away the memory of Mr. Petrizzi's calculus test"
                 }
             ],
             "section-name": "drinks"
