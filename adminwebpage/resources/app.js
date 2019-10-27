@@ -37,7 +37,7 @@ window.onload = function() {
     for (i = 0; i < jsonObj.items.length; i++) {
       div.innerHTML += jsonObj.items[i].quantity + 'x ' + jsonObj.items[i].item + ' ($' + jsonObj.items[i].price.toFixed(2)  + ' ea.)' + '<br />';
     }
-    div.innerHTML += '<div style = "float: right"> <a href = "javascript.document.getElementById(\'' + nextId.toString() + '\').setAttribute(\'class\', \'done\')"> Complete </a></div>'
+    div.innerHTML += '<div style = "float: right"> <a href = "javascript:document.getElementById(\'' + nextId.toString() + '\').setAttribute(\'class\', \'done\')"> Complete </a></div>'
     nextId++;
     document.getElementById("main").appendChild(div);
   };
