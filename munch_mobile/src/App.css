@@ -25,4 +25,29 @@
 
 .meal-box {
   display: grid;
+  grid-template-columns: 150px auto;
+}
+
+.meal-box>* {
+  vertical-align: top;
+}
+
+.meal-info {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.meal-info>* {
+  display: inline;
+  vertical-align: top;
+  align-self: start;
+  margin: 0;
+}
+
+.meal-desc {
+  grid-row: 2;
+}
+.price-tag {
+  justify-self: end;
+  grid-row: 2;
 }

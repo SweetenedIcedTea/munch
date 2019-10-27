@@ -15,9 +15,17 @@ export default class MenuItem extends Component<Props, State> {
     }
     render() {
         return (
-            <div className="meal-box">
+            <span className="meal-box">
                 <img src="stulin.png" className="meal-thumb"></img>
-            </div>
+                <div className="meal-info">
+                    <h2>{this.food.name}</h2>
+                    <br></br>
+                    <p className="meal-desc">{this.food.description}</p>
+                    <p className="price-tag">{this.food.price}</p>
+                    <p className="ingredients">{this.food.ingredients.join(', ')}</p>
+                </div>
+                
+            </span>
         );
     }
 }
