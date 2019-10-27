@@ -10,7 +10,7 @@ def get_foods(menu_dict):
 def id2food(id,menu_dict):
     for c in range(len(menu_dict['sections'])):
         for c1 in range(len(menu_dict['sections'][c]['foods'])):
-            if menu_dict['sections'][c]['foods'][c1]['item_id']==id:
+            if menu_dict['sections'][c]['foods'][c1]['item-id']==id:
                 return menu_dict['sections'][c]['foods'][c1]['name']
     return 'none'
 class Backend:
