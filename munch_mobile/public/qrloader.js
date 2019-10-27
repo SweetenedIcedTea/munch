@@ -3,8 +3,9 @@ import QrScanner from './qr-scanner.min.js';
 var scanner;
 
 window.onScan = (data)=>{
+    data = data.split(" ");
     console.log("[qrloader] Scanned data:",data);
-    window.onScanResolved(data);
+    window.onScanResolved(data[0], data[1]);
     window.stopScanner();
 }
 
