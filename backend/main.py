@@ -18,7 +18,9 @@ def main():
         web.get('/rest', handler.handle_websocket),
         web.get('/rest_page', handler.handle_rest_page_get),
         web.post('/rest_page', handler.handle_rest_page_post),
-        web.static('/resources', '../adminwebpage/resources')])
+        web.static('/resources', '../adminwebpage/resources'),
+        web.static('/ian', '../static_stuff')
+        ])
     web.run_app(app, port=80)
 
 if __name__ == '__main__':
