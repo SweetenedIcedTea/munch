@@ -70,6 +70,7 @@ export default class App extends Component<AppProps, AppState> {
     async onScanResolved(id: string, table: string) {
         this.setState({
             activeMenu: await munch.getMenu(id),
+            table: table,
             stage: 'menu'
         });
         console.log(this.state.activeMenu);
