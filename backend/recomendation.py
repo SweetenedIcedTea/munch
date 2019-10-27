@@ -124,7 +124,8 @@ class recomend():
         target_vec=np.zeros([1,7])
         for c in range(len(list(order_id.keys()))):
             if order_id[list(order_id.keys())[c]]!=0:
-                target_vec[0,int(list(order_id.keys())[c])-1]=1
+                target_vec[0,int(list(order_id.keys())[c])-1]=order_id[list(order_id.keys())[c]]
+        target_vec=target_vec/np.max(target_vec)
         new_vec=np.concatenate([input_vec,target_vec],axis=1)
         #make new data
         load_data=np.genfromtxt(os.getcwd()+"/ml/"+str(customer_id)+"/history.csv",delimiter=',')
