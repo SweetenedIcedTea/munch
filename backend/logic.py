@@ -36,7 +36,6 @@ class Backend:
         print("Handling menu", menu_id)
         with open(menu_id+".json",'r') as f:
             v1=f.read()
-            print(v1)
             v0=json.loads(v1)
             f.close()
         # TODO
