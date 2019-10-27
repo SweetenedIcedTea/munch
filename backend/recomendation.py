@@ -95,7 +95,7 @@ class recomend():
         max_num=2
         max_list=[]
         for c in range(max_num):
-            max_arg=np.argmax(np_pred,axis=1)[0]
+            max_arg=np.argmax(np_pred,axis=1)[0][0]
             max_list+=[max_arg+1]
             np_pred[0,max_arg]=-1
         return max_list
@@ -129,7 +129,7 @@ class recomend():
         load_data=np.genfromtxt(os.getcwd()+"/ml/"+customer_id+"/history.csv",delimiter=',')
         v0=load_data.shape
         if len(v0)==1:
-            load_data.shape=[1,126]
+            load_data.shape=[1,self.il_length*7+7]
         self.new_data=np.concatenate([load_data,new_vec],axis=0)
         np.savetxt(os.getcwd()+"/ml/"+customer_id+"/history.csv",self.new_data,delimiter=',')
         self.recommend_train(customer_id,self.new_data)
