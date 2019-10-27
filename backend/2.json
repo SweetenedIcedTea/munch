@@ -1,1 +1,83 @@
-{"restaurant-id": 2, "sections": [{"foods": [{"item-id": 1, "name": "Grilled fish", "price": 69.9, "ingredients": ["fish", "lemon"], "description": "borgar"}, {"item-id": 2, "name": "posh food", "price": 420.69, "ingredients": ["fish", "beef", "potato", "scallop", "lemon"], "description": "borgar"}], "section_name": "entree"}, {"foods": [{"item-id": 3, "name": "Caviar", "price": 299, "ingredients": ["caviar"], "description": "borgar"}], "section_name": "appetizer"}, {"foods": [{"item-id": 4, "name": "Ice cream", "price": 12.99, "ingredients": ["water", "sugar", "milk"], "description": "borgar"}, {"item-id": 5, "name": "yoghurt", "price": 42.9, "ingredients": ["water", "sugar"], "description": "borgar"}], "section_name": "desert"}, {"foods": [{"item-id": 6, "name": "Water", "price": 42.9, "ingredients": ["water"], "description": "borgar"}, {"item-id": 7, "name": "Sweet Water", "price": 4.29, "ingredients": ["water, sugar"], "description": "borgar"}], "section_name": "drinks"}]}
+{
+    "restaurant-id": 2,
+    "sections": [
+        {
+            "foods": [
+                {
+                    "item-id": 1,
+                    "name": "Grilled fish",
+                    "price": 69.9,
+                    "ingredients": ["halibut", "garlic", "olive oil", "lemon juice", "salt", "black pepper", "parsley"],
+                    "description": "Flaky white fresh caught fish grilled lightly over my CPU after it tries to run Counter-Strike"
+                },
+                {
+                    "item-id": 2,
+                    "name": "Very nice food",
+                    "price": 420.69,
+                    "ingredients": [
+                        "CBD oil"
+                    ],
+                    "description": "yoooooo it's 4:20 am; that's funny because we didn't sleep."
+                }
+            ],
+            "section_name": "entree"
+        },
+        {
+            "foods": [
+                {
+                    "item-id": 3,
+                    "name": "Caviar",
+                    "price": 299,
+                    "ingredients": ["fresh caviar", "your life's savings lmao"],
+                    "description": "When you want to flex harder than Matt Yao"
+                }
+            ],
+            "section_name": "appetizer"
+        },
+        {
+            "foods": [
+                {
+                    "item-id": 4,
+                    "name": "Vanilla ice cream",
+                    "price": 6.99,
+                    "ingredients": ["water", "sugar", "milk", "heavy cream"],
+                    "description": "The most basic of meals"
+                },
+                {
+                    "item-id": 5,
+                    "name": "Yogurt Parfait",
+                    "price": 3.99,
+                    "ingredients": ["pasteurized milk", "fresh strawberries", "cream", "whey", "milk protein concentraie", "bacteria", "granola"],
+                    "description": "Yogurt is just fermented milk change my mind"
+                }
+            ],
+            "section_name": "dessert"
+        },
+        {
+            "foods": [
+                {
+                    "item-id": 6,
+                    "name": "Water",
+                    "price": 99.99,
+                    "ingredients": ["water", "minerals"],
+                    "description": "Sourced straight from Flint, Michigan"
+                },
+                {
+                    "item-id": 7,
+                    "name": "Sweet Water",
+                    "price": 199.99,
+                    "ingredients": ["water", "sugar"],
+                    "description": "Water but infused with diabetes"
+                },
+                {
+                    "item-id": 8,
+                    "name": "Vodka",
+                    "price": 299.99,
+                    "ingredients": ["premium russian tap water"],
+                    "description": "Perfect for washing away the memory of Mr. Petrizzi's calculus test"
+                }
+            ],
+            "section_name": "drinks"
+        }
+    ]
+}
