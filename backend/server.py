@@ -37,3 +37,7 @@ class Handler:
         result = self.backend.handle_order(json.decode())
         return web.Response(text = result)
 
+    async def handle_echo(self, request):
+        got_stuff = await request.read()
+        return web.Response(data = got_stuff)
+
