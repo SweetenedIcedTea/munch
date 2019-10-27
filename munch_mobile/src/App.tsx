@@ -3,10 +3,9 @@ import logo from "./logo.svg";
 import "./App.css";
 import $ from "jquery";
 import MunchServer from "./API";
+import { Menu } from "./DataClasses";
 
 const munch = new MunchServer("http://domainofthebones.com");
-
-
 
 class RestaurantQR extends Component {
     scanner: any;
@@ -16,7 +15,6 @@ class RestaurantQR extends Component {
     }
 
     async componentDidMount() {
-        (window as any).startScanner();
         console.log(await munch.getMenu("1"));
         (window as any).onDecode = this.onDecode;
     }
@@ -35,20 +33,29 @@ class RestaurantQR extends Component {
     }
 }
 
-export default class App extends Component {
+interface AppState {
+    stage: string;
+    failedToConnect: boolean;
+    activeMenu?: Menu;
+}
+
+interface AppProps {}
+
+export default class App extends Component<AppProps, AppState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            stage: 'connecting',
+            stage: "scanning",
             failedToConnect: false
         };
+        (window as any).onScanResolved = this.onScanResolved.bind(this);
     }
 
     async componentDidMount() {
         const connected = await munch.testConnection();
         if (connected) {
             this.setState({
-                stage: 'scanning'
+                stage: "scanning"
             });
         } else {
             this.setState({
@@ -57,22 +64,21 @@ export default class App extends Component {
         }
     }
 
+    async onScanResolved(QRData: string) {
+        this.setState({
+            activeMenu: await munch.getMenu(QRData)
+        });
+        console.log(this.state.activeMenu);
+    }
+
     renderQRStage() {
         return <RestaurantQR></RestaurantQR>;
     }
-    renderConnectingStage() {
-        return (
-            <div>
-                <p>{(this.state as any).failedToConnect ? "Failed to connect to server. Go yell at Mark or something" : "Connecting..."}</p>
-            </div>
-        );
-    }
     renderCurrentStage() {
         const stageRenderers: { [stageName: string]: Function } = {
-            connecting: this.renderConnectingStage.bind(this),
             scanning: this.renderQRStage.bind(this)
         };
-        return stageRenderers[(this.state as any).stage]();
+        return stageRenderers[this.state.stage]();
     }
     render() {
         return <div className="App">{this.renderCurrentStage()}</div>;
