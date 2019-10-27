@@ -42,11 +42,9 @@ Returns JSON for menu
     "customer-id": 69,
     "restaurant-id": 123456,
     "table-id": 2,
-    "order": [
-        {
-        "item-id": 654321
-        }
-    ]
+    "order": {
+        "1": 3
+    }
 }
 ```
 

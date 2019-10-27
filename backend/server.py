@@ -47,7 +47,7 @@ class Handler:
                 return
 
     async def handle_menu(self, request):
-        menu_id = request.match_info.get('menu_id')
+        menu_id = int(request.match_info.get('menu_id'))
         customer_id = int(request.cookies['customer_id'])
         result = self.backend.handle_menu(menu_id, customer_id)
         return web.Response(text = result)
