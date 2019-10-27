@@ -19,6 +19,7 @@ def main():
         web.get('/rest_page', handler.handle_rest_page_get),
         web.post('/rest_page', handler.handle_rest_page_post),
         web.static('/resources', '../adminwebpage/resources'),
+        web.static('/qrloader.js', '../static_stuff/qrloader.js'),
         web.static('/static', '../static_stuff/static')
         ])
     web.run_app(app, port=80)
