@@ -77,7 +77,7 @@ class Backend:
                     'quantity': quantity,
                     'price': item['price']
                 }
-        items = [do_item(item['item-id'], item['quantity']) for item in order]
+        items = [do_item(int(item_id), quantity) for item_id, quantity in order]
         order_for_rect = {
                 'name': self.customers[customer_id],
                 'table': data_dict['table-id'],
