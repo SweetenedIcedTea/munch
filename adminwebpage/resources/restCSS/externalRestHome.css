@@ -33,11 +33,13 @@ div.logo {
   margin: 0;
   float: left;
   position: absolute;
-  color: #f2f2f2;
+  width: 116px;
+  height: 42px;
+  object-fit: scale-down;
 }
 
 div.order{
-  width: 150px;
+  width: 250px;
   background: #282839;
   color: "white";
   float: left;
