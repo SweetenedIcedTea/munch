@@ -33,7 +33,9 @@ div.logo {
   margin: 0;
   float: left;
   position: absolute;
-  color: #f2f2f2;
+  width: 116px;
+  height: 42px;
+  object-fit: cover;
 }
 
 div.order{
