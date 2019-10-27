@@ -62,7 +62,7 @@ class Backend:
 
         # Load menu
         with open(str(id)+".json",'r') as f:
-            menu = [item for item in section['foods'] for section in json.loads(f.read())['sections']]
+            menu = [item for section in json.loads(f.read())['sections'] for item in section['foods']]
             f.close()
 
         # AI stuff
