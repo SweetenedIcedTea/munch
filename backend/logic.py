@@ -30,7 +30,8 @@ class Backend:
             print(v1)
             v0=json.loads(v1)
             f.close()
-        return v0
+        # process v0...
+        return json.dumps(v0)
 
     def handle_order(self, json_data):
         print("Handling order")
@@ -49,3 +50,6 @@ class Backend:
         #    price+=food_dict[id]['price']
         return 'kys'
 
+    def get_rest_page_html(self, rest_id):
+        # TODO
+        return 'halp'
