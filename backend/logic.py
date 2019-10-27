@@ -78,13 +78,14 @@ class Backend:
                     'price': item['price']
                 }
         items = [do_item(int(item_id), quantity) for item_id, quantity in order]
-        order_for_rect = {
+        order_for_rest = {
                 'name': self.customers[customer_id],
                 'table': data_dict['table-id'],
                 'price': sum(item['quantity'] * item['price'] for item in items),
                 'items': items
             }
-        self.send_to_rest(id,json.dumps(order_for_rect))
+        print("The order is", json.dumps(order_for_rest))
+        self.send_to_rest(id,json.dumps(order_for_rest))
         return 'order complete'
 
     def get_rest_page_html(self, rest_id):

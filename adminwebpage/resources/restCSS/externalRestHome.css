@@ -35,3 +35,10 @@ div.logo {
   position: absolute;
   color: #f2f2f2;
 }
+
+div.order{
+  width: "150px";
+  background: #160D6D;
+  color: "white";
+  float: left;
+}
