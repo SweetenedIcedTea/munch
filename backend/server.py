@@ -11,6 +11,11 @@ class Handler:
     def __init__(self, backend):
         self.backend = backend
 
+    async def handle_favicon(self, request):
+        with open('../adminwebpage/resources/pictures/munch.ico', 'rb') as f:
+            content = f.read()
+        return web.Response(body = content, content_type = 'image/x-icon')
+
     async def handle_index_get(self, request):
         if 'customer_id' in request.cookies:
             customer_id = int(request.cookies['customer_id'])

@@ -9,6 +9,7 @@ def main():
 
     app = web.Application()
     app.add_routes([
+        web.get('/favicon.ico', handler.handle_favicon),
         web.get('/', handler.handle_index_get),
         web.post('/', handler.handle_index_post),
         web.get('/menu/{menu_id}', handler.handle_menu),
