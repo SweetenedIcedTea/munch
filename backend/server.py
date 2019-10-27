@@ -7,7 +7,7 @@ class Handler:
     def __init__(self, backend):
         self.backend = backend
 
-    async def handle_home(self, request):
+    async def handle_index(self, request):
         return web.Response(text = "Hi there")
 
     async def handle_websocket(self, request):
@@ -39,5 +39,15 @@ class Handler:
 
     async def handle_echo(self, request):
         got_stuff = await request.read()
-        return web.Response(data = got_stuff)
+        return web.Response(body = got_stuff)
+
+    async def handle_login(self, request):
+        with open('login.html') as f:
+            content = f.read()
+        return web.Response(body = content, content_type = 'text/html')
+
+    async def handle_rest_page(self, request):
+        rest_id = int((await request.read()).decode().split('&', maxsplit=1)[0].split('=', maxsplit=1)[1])
+        html = self.backend.get_rest_page_html(rest_id)
+        return web.Response(body = content, content_type = 'text/html')
 

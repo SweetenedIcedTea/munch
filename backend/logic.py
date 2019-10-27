@@ -23,14 +23,16 @@ class Backend:
     def send_to_rest(self, rest_id, data):
         self.rests[rest_id].put_noawait(data)
 
-    def handle_menu(self,menu_id):
+    def handle_menu(self, menu_id, user_id):
         print("Handling menu", menu_id)
         with open(menu_id+".json",'r') as f:
             v1=f.read()
             print(v1)
             v0=json.loads(v1)
             f.close()
-        return v0
+        # TODO
+        # Add recommendations to JSON
+        return json.dumps(v0)
 
     def handle_order(self, json_data):
         print("Handling order")
@@ -49,3 +51,6 @@ class Backend:
         #    price+=food_dict[id]['price']
         return 'kys'
 
+    def get_rest_page_html(self, rest_id):
+        # TODO
+        return 'halp'
