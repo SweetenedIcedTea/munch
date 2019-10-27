@@ -8,7 +8,19 @@ class Handler:
         self.backend = backend
 
     async def handle_index(self, request):
-        return web.Response(text = "Hi there")
+        if 'customer_id' in request.cookies:
+            customer_id = int(request.cookies['customer_id'])
+            return web.Response(text = "Hi, customer %d" % customer_id)
+        else:
+            with open('login.html') as f:
+                html = f.read()
+            return web.Response(body = html, content_type = 'text/html')
+
+    async def handle_post_index(self, request):
+        name = (await request.read()).decode().split('=', maxsplit=1)[1]
+        customer_id = self.backend.register_customer(name)
+        headers = {'Set-Cookie': 'customer_id=%d'%customer_id}
+        return web.Response(text = "Your new id is %d" % customer_id, headers = headers)
 
     async def handle_websocket(self, request):
         ws = web.WebSocketResponse()
@@ -29,7 +41,8 @@ class Handler:
 
     async def handle_menu(self, request):
         menu_id = request.match_info.get('menu_id')
-        result = self.backend.handle_menu(menu_id)
+        customer_id = request.cookies['customer_id']
+        result = self.backend.handle_menu(menu_id, customer_id)
         return web.Response(text = result)
 
     async def handle_order(self, request):

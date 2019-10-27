@@ -10,6 +10,7 @@ def main():
     app = web.Application()
     app.add_routes([
         web.get('/', handler.handle_index),
+        web.post('/', handler.handle_post_index),
         web.get('/menu/{menu_id}', handler.handle_menu),
         web.post('/order', handler.handle_order),
         web.post('/echo', handler.handle_echo),

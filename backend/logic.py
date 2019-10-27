@@ -11,6 +11,8 @@ def get_foods(menu_dict):
 class Backend:
     def __init__(self):
         self.rests = {}
+        self.customers = {}
+        self.next_customer_id = 2
 
     def register_rest(self, rest_id, queue):
         print("registering rest", rest_id)
@@ -18,6 +20,12 @@ class Backend:
 
     def unregister_rest(self, rest_id):
         del self.rests[rest_id]
+
+    def register_customer(self, name):
+        customer_id = self.next_customer_id
+        self.next_customer_id += 1
+        self.customers[customer_id] = name
+        return customer_id
 
     "Data has to be json text (type str)"
     def send_to_rest(self, rest_id, data):
