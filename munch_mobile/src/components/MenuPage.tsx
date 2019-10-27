@@ -114,15 +114,16 @@ export default class MenuPage extends Component<Props, State> {
             <div>
                 {this.hasOrderedAnything() ? this.renderBreakdown() : null}
                 <h1 className="title">Menu for {this.props.menuData.restaurantName}</h1>
+                <div className="recommended">
+                    <h2>You may like:</h2>
+                    <p>{this.props.menuData.recommended.map(foodId => this.idTable[foodId]).join(", ")}</p>
+                </div>
                 <ul>
                     {this.props.menuData.sections.map(
                         this.renderSection.bind(this)
                     )}
                 </ul>
-                <div className="recommended">
-                    <h2>Recommended for you by our top-notch AI:</h2>
-                    <p>{this.props.menuData.recommended.map(foodId => this.idTable[foodId]).join(", ")}</p>
-                </div>
+                
                 
             </div>
         );

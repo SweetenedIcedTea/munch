@@ -54,6 +54,7 @@
 .price-tag {
   justify-self: end;
   grid-row: 2;
+  margin-right: 20px;
 }
 
 .ingredients {
