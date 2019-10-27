@@ -41,8 +41,8 @@ class Backend:
             f.close()
         # TODO
         rec_list=self.rec.predict(menu_id,user_id)
-        rec_json=json.dumps({'recomendation':rec_list})
-        return json.dumps(v0),rec_json
+        v0['recomendation']=rec_list
+        return json.dumps(v0)
 
     def handle_order(self, json_data):
         print("Handling order")
