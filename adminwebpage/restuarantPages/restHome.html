@@ -1,16 +1,16 @@
 <html>
 <head>
 <title>Munch Restuarant Home</title>
-<script src="/Users/sweetenedicedtea/Desktop/munchApp/munch/adminwebpage/resources/app.js"></script>
-<script type="text/javascript" src="/Users/sweetenedicedtea/Desktop/munchApp/munch/adminwebpage/resources/util.js"></script>
-<link rel = "stylesheet", type = "text/css", href = "/Users/sweetenedicedtea/Desktop/munchApp/munch/adminwebpage/resources/restCSS/externalRestHome.css"/>
+<script src="/resources/app.js"></script>
+<script type="text/javascript" src="/resources/util.js"></script>
+<link rel = "stylesheet", type = "text/css", href = "/resources/restCSS/externalRestHome.css"/>
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="topnav">
     <div class=logo>munch.</div>
     <a>Log out</a>
-    <div id = "restName">restName</div>
+    <div id = "restName">{rest_name}</div>
   </div>
 
   <div style="padding-left:16px">
@@ -19,16 +19,9 @@
   </div>
 
   <div id="page-wrapper">
-      <h1>WebSockets be like</h1>
-
       <div id="status">Connecting...</div>
 
       <ul id="messages"></ul>
-
-      <form action = "\rest-page" method="post">
-        <textarea placeholder="Input Store ID" class = "tb5" required></textarea>
-        <button type="submit">Login</button>
-      </form>
     </div>
 
 </body>
