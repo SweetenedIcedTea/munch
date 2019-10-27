@@ -71,7 +71,7 @@ class Backend:
 
         # Generate new format
         def do_item(item_id, quantity):
-            item = [item for item in menu if item['item-id'] == item_id`]
+            item = [item for item in menu if item['item-id'] == item_id]
             return {
                     'item': item['name'],
                     'quantity': quantity,
