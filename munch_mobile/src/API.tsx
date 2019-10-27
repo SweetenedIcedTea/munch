@@ -10,6 +10,7 @@ export default class MunchServer {
     }
     async getMenu(id: string | number): Promise<Menu> {
         const menuJSON = await this.get("menu/"+id);
+        console.log("[debug]",menuJSON);
         return Menu.fromJSON(menuJSON);
     }
     async get(endpoint: string) {

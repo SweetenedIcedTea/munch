@@ -16,3 +16,13 @@
   height: 100%;
   padding: 10px;
 }
+
+.meal-thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.meal-box {
+  display: grid;
+}
