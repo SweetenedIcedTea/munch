@@ -60,8 +60,8 @@ class recomend():
         self.il_length=len(ing_list)
         v1d_dset=make_datasets(v1d,ing_list)
         v2d_dset=make_datasets(v2d,ing_list)
-        v1d_dset.shape=[1,119]
-        v2d_dset.shape=[1,119]
+        v1d_dset.shape=[1,self.il_length*7]
+        v2d_dset.shape=[1,self.il_length*7]
         self.v1d_dset=v1d_dset
         self.v2d_dset=v2d_dset
         buy_water=np.zeros([1,7])
