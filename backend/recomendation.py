@@ -33,8 +33,6 @@ def load_menu():
             for c2 in range(len(ingredient['ingredients'])):
                 if not(ingredient['ingredients'][c2] in ing_list):
                     ing_list+=[ingredient['ingredients'][c2]]
-    print(ing_list)
-    print(food_count_1,food_count_2)
     return ing_list,v1d,v2d
 def make_datasets(menu_dict,ing_list):
     menu_vector=np.zeros([7,len(ing_list)])
@@ -73,8 +71,6 @@ class recomend():
         self.criterion=nn.MSELoss()
         learning_rate=0.01
         self.optim=torch.optim.Adam(self.munch.parameters(), lr = learning_rate,weight_decay=0.000)
-        print(v1d)
-        print(v2d)
         return
     def account_check(self,customer_id):
         customer_id=str(customer_id)
