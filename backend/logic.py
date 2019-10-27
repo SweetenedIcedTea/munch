@@ -15,10 +15,14 @@ def id2food(id,menu_dict):
     return 'none'
 class Backend:
     def __init__(self):
+        self.rest_names = {1: "Jeff's Joint", 2: "Paul's Place"}
         self.rests = {}
         self.rec=recomend()
         self.customers = {}
         self.next_customer_id = 2
+
+    def verify_rest(self, rest_id):
+        return rest_id in self.rest_names
 
     def register_rest(self, rest_id, queue):
         print("registering rest", rest_id)
@@ -73,5 +77,7 @@ class Backend:
         return 'kys'
 
     def get_rest_page_html(self, rest_id):
-        # TODO
-        return 'halp'
+        rest_name = self.rest_names[rest_id]
+        with open('../adminwebpage/restuarantPages/restHome.html') as f:
+            content = f.read()
+        return content.format(rest_name = rest_name)
