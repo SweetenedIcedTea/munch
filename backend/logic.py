@@ -61,7 +61,7 @@ class Backend:
         id=data_dict['restaurant-id']
 
         # Load menu
-        with open(id+".json",'r') as f:
+        with open(str(id)+".json",'r') as f:
             menu = [item for item in section['foods'] for section in json.loads(f.read())['sections']]
             f.close()
 
