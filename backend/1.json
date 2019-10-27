@@ -18,7 +18,7 @@
                     "description": "The best steak you've ever had"
                 }
             ],
-            "section_name": "bbq"
+            "section-name": "bbq"
         },
         {
             "foods": [
@@ -36,7 +36,7 @@
                     "description": "Leaves but with dressing"
                 }
             ],
-            "section_name": "appetizer"
+            "section-name": "appetizer"
         },
         {
             "foods": [
@@ -55,7 +55,7 @@
                     "description": "Gross"
                 }
             ],
-            "section_name": "sides"
+            "section-name": "sides"
         },
         {
             "foods": [
@@ -74,7 +74,7 @@
                     "description": "The reason we're all level 70 on Steam"
                 }
             ],
-            "section_name": "drinks"
+            "section-name": "drinks"
         }
     ]
 }
