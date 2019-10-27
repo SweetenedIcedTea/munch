@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  background-color: #5C1C1C;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #ad0c1b;
+  height: 8%;
+}
+
+.topnav a {
+  float: right;
+  color: #ccc;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  color: #fff;
+}
+.topnav div {
+  color: #fff;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 36px;
+}
+div.logo {
+  margin: 0;
+  float: left;
+  position: absolute;
+  color: #f2f2f2;
+}

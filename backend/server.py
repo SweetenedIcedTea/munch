@@ -3,6 +3,10 @@ from asyncio import Queue
 
 from logic import Backend
 
+def read_file(path):
+    with open(path) as f:
+        return f.read()
+
 class Handler:
     def __init__(self, backend):
         self.backend = backend
@@ -12,15 +16,13 @@ class Handler:
             customer_id = int(request.cookies['customer_id'])
             return web.Response(text = "Hi, customer %d" % customer_id)
         else:
-            with open('login.html') as f:
-                html = f.read()
-            return web.Response(body = html, content_type = 'text/html')
+            return web.Response(body = read_file('login.html'), content_type = 'text/html')
 
     async def handle_post_index(self, request):
         name = (await request.read()).decode().split('=', maxsplit=1)[1]
         customer_id = self.backend.register_customer(name)
         headers = {'Set-Cookie': 'customer_id=%d'%customer_id}
-        return web.Response(text = "Your new id is %d" % customer_id, headers = headers)
+        return web.Response(body = read_file('redirect.html'), content_type = 'text/html', headers = headers)
 
     async def handle_websocket(self, request):
         ws = web.WebSocketResponse()
@@ -55,9 +57,7 @@ class Handler:
         return web.Response(body = got_stuff)
 
     async def handle_login(self, request):
-        with open('login.html') as f:
-            content = f.read()
-        return web.Response(body = content, content_type = 'text/html')
+        return web.Response(body = read_file('login.html'), content_type = 'text/html')
 
     async def handle_rest_page(self, request):
         rest_id = int((await request.read()).decode().split('&', maxsplit=1)[0].split('=', maxsplit=1)[1])
