@@ -18,7 +18,7 @@ export default class MenuItem extends Component<Props, State> {
     render() {
         return (
             <span className="meal-box">
-                <img src="stulin.png" className="meal-thumb"></img>
+                <img src={"http://domainofthebones.com/resources/food_thumbs/"+this.food.image} className="meal-thumb"></img>
                 <div className="meal-info">
                     <h2>{this.food.name}</h2>
                     <br></br>

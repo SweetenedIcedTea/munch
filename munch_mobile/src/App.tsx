@@ -75,11 +75,15 @@ export default class App extends Component<AppProps, AppState> {
     }
 
     async onCheckout(foodQty: { [foodId: string]: number }) {
+        this.setState({
+            stage:'thanks'
+        });
         await munch.post("order", {
             "table-id": 1,
             "restaurant-id": parseInt(this.state.activeMenu!.id),
             "order": foodQty
         });
+        
     }
 
     renderQRStage() {
@@ -88,18 +92,38 @@ export default class App extends Component<AppProps, AppState> {
     renderMenuStage() {
         const menu = this.state.activeMenu!;
         return (
+            
             <MenuPage menuData={menu} onCheckout={this.onCheckout.bind(this)}></MenuPage>
+        );
+    }
+    renderEndStage() {
+        return (
+            <div className="end-card">
+                <h1>Thank you for eating at {this.state.activeMenu!.restaurantName}!</h1>
+                <button onClick={()=>{
+                    window.location.reload();
+                }}>Home</button>
+            </div>
         );
     }
     renderCurrentStage() {
         const stageRenderers: { [stageName: string]: Function } = {
             scanning: this.renderQRStage.bind(this),
-            menu: this.renderMenuStage.bind(this)
+            menu: this.renderMenuStage.bind(this),
+            thanks: this.renderEndStage.bind(this)
         };
         return stageRenderers[this.state.stage]();
     }
     render() {
-        return <div className="App">{this.renderCurrentStage()}</div>;
+        return <div className="App">
+            <div className="topnav">
+                    <img className = "logo" src = "http://domainofthebones.com/resources/pictures/munchLogoTrans.png"></img>
+                    <a onClick={()=>{
+                        window.location.reload();
+                    }}>Home</a>
+                </div>
+            {this.renderCurrentStage()}
+        </div>;
     }
 }
 
