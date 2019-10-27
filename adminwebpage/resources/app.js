@@ -9,7 +9,7 @@ window.onload = function() {
   var nextId = 0
 
 
-  var socket = new WebSocket('ws://domainofthebones.com/rest');
+  var socket = new WebSocket('wss://domainofthebones.com/rest');
 
   // Show a connected message when the WebSocket is opened.
   socket.onopen = function(event) {

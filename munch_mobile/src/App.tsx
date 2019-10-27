@@ -6,7 +6,7 @@ import MunchServer from "./API";
 import { Menu } from "./DataClasses";
 import MenuPage from "./components/MenuPage";
 
-const munch = new MunchServer("http://domainofthebones.com");
+const munch = new MunchServer("https://domainofthebones.com");
 
 class RestaurantQR extends Component {
     scanner: any;
@@ -117,7 +117,7 @@ export default class App extends Component<AppProps, AppState> {
     render() {
         return <div className="App">
             <div className="topnav">
-                    <img className = "logo" src = "http://domainofthebones.com/resources/pictures/munchLogoTrans.png"></img>
+                    <img className = "logo" src = "/resources/pictures/munchLogoTrans.png"></img>
                     <a onClick={()=>{
                         window.location.reload();
                     }}>Home</a>
