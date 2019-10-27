@@ -1,5 +1,5 @@
 import json
-
+from recomendation import recomend
 def get_foods(menu_dict):
     food_dict={}
     for c in range(len(menu_dict['sections'])):
@@ -11,6 +11,7 @@ def get_foods(menu_dict):
 class Backend:
     def __init__(self):
         self.rests = {}
+        self.rec=recomend()
         self.customers = {}
         self.next_customer_id = 2
 
@@ -39,14 +40,19 @@ class Backend:
             v0=json.loads(v1)
             f.close()
         # TODO
-        # Add recommendations to JSON
-        return json.dumps(v0)
+        rec_list=self.rec.predict(menu_id,user_id)
+        rec_json=json.dumps({'recomendation':rec_list})
+        return json.dumps(v0),rec_json
 
     def handle_order(self, json_data):
         print("Handling order")
         data_dict=json.loads(json_data)
         id=data_dict['restaurant-id']
         self.send_to_rest(id,json_data)
+        #get restaurant-id
+        customer_id=data_dict['customer-id']
+        order=data_dict['order']
+        self.rec.reccomend_data_science(id,customer_id,order)
         #with open(data_dict['restaurant_id']+'.json','r') as f:
         #    v1=f.read()
         #    print(v1)
