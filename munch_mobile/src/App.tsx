@@ -55,16 +55,16 @@ export default class App extends Component<AppProps, AppState> {
     }
 
     async componentDidMount() {
-        const connected = await munch.testConnection();
-        if (connected) {
-            this.setState({
-                stage: "scanning"
-            });
-        } else {
-            this.setState({
-                failedToConnect: true
-            });
-        }
+        // const connected = await munch.testConnection();
+        // if (connected) {
+        //     this.setState({
+        //         stage: "scanning"
+        //     });
+        // } else {
+        //     this.setState({
+        //         failedToConnect: true
+        //     });
+        // }
     }
 
     async onScanResolved(id: string, table: string) {
