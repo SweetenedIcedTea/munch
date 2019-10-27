@@ -52,7 +52,7 @@ class Backend:
         #get restaurant-id
         customer_id=data_dict['customer-id']
         order=data_dict['order']
-        self.rec.reccomend_data_science(id,customer_id,order)
+        self.rec.recommend_data_science(id,customer_id,order)
         #with open(data_dict['restaurant_id']+'.json','r') as f:
         #    v1=f.read()
         #    print(v1)
